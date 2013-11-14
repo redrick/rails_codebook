@@ -5,14 +5,14 @@ module RailsCodebook
     class Base < ActionController::Base
       before_filter :set_locale
 
-      self.abstract_class = true
-
+      # setting locale if found in url
       def set_locale
-          I18n.locale = params[:lang] || I18n.default_locale
+        I18n.locale = params[:lang] || I18n.default_locale
       end
 
       private
 
+        # name of codebook model, still the same for now...
         def codebook
           "RailsCodebook::#{controller_name.classify}".constantize
         end

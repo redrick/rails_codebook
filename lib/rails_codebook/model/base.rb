@@ -4,6 +4,8 @@ module RailsCodebook
     
     class Base < RedisOrm::Base
 
+      self.abstract_class = true
+
       # array  with value columns from the codebook
       def self.get_values
         self.all.map(&:value)
@@ -15,7 +17,7 @@ module RailsCodebook
       end
 
       # searching through codebook with usage of i18n
-      def self.search query_string, array=[]
+      def self.search query_string, array=[]  
         self.all.each {|redis_row| array << redis_row if I18n.t(redis_row.name) =~ /#{query_string}/i }; array
       end
 

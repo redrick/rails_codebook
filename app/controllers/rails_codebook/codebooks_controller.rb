@@ -1,7 +1,7 @@
 module RailsCodebook
 
   class CodebooksController < RailsCodebook::Controller::Base
- 
+
     # index for all codebooks
     # /codebooks
     def index
@@ -31,13 +31,6 @@ module RailsCodebook
       render json: @codebook
     end
 
-    # searching all the codebooks
-    # /codebooks?q=something
-    def search
-      @codebook = codebook.search(codebook_params).paginate(page: params[:page])
-      render json: @codebook
-    end
-
     # searching one of the codebooks
     # /codebooks?q=something
     # /codebooks/cb_name?q=something
@@ -45,7 +38,7 @@ module RailsCodebook
       @codebook = codebook.search(params[:q]).paginate(page: params[:page])
       render json: @codebook
     end
-      
+
   end
 
 end
