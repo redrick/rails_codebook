@@ -39,8 +39,6 @@ module RailsCodebook
     end
 
     def index
-        binding.pry
-      
       if params[:q]
         @codebook = codebook.search(params[:q]).paginate(page: params[:page])
         respond_with @codebook
