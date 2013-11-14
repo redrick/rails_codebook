@@ -1,62 +1,51 @@
 module RailsCodebook
 
   class CodebooksController < RailsCodebook::Controller::Base
-    respond_to :json
-
-    def show
-      @codebook = codebook.find(params[:id])
-      respond_with @codebook
-    end
-
-    def destroy
-      @codebook = codebook.find(params[:id])
-      @codebook.destroy
-      respond_with true
-    end
-
-    def update
-      @codebook = codebook.update(params[:id], codebook_params)
-      respond_with @codebook.save
-    end
-
-    def create
-      @codebook = codebook.create(codebook_params)
-      respond_with @codebook.save
-    end
-
-    def new
-      @codebook = codebook.new
-      respond_with @codebook
-    end
-
-    def edit
-      show
-    end
-
-    def search
-      @codebook = codebook.search(codebook_params).results.paginate(page: params[:page])
-      respond_with @codebook
-    end
-
+ 
+    # index for all codebooks
+    # /codebooks
     def index
       if params[:q]
-        @codebook = codebook.search(params[:q]).paginate(page: params[:page])
-        respond_with @codebook
-      else        
-        @codebook = codebook.all_codebookify.paginate(page: params[:page])
-        respond_with @codebook
+        search
+      else
+        @codebook = codebook.all.paginate(page: params[:page])
+        render json: @codebook
       end
     end
 
-    def show
-      @codebook = codebook.codebookify(params[:id])
-      respond_with @codebook
+    # index showing only one codebook
+    # /codebooks/cb_name
+    def codebook_index
+      if params[:q]
+        search
+      else
+        @codebook = codebook.find_all_by_cb_name(params[:cb_name])
+        render json: @codebook
+      end
     end
 
-    # def model_attributes codebook
-    #   { name: 'ad', value:'das', codebook_name:'sad'}
-    # end
+    # showing one codebook line
+    # /codebooks/cb_name/value
+    def show
+      @codebook = codebook.find(params[:id])
+      render json: @codebook
+    end
 
+    # searching all the codebooks
+    # /codebooks?q=something
+    def search
+      @codebook = codebook.search(codebook_params).paginate(page: params[:page])
+      render json: @codebook
+    end
+
+    # searching one of the codebooks
+    # /codebooks?q=something
+    # /codebooks/cb_name?q=something
+    def search
+      @codebook = codebook.search(params[:q]).paginate(page: params[:page])
+      render json: @codebook
+    end
+      
   end
 
 end
