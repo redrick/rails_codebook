@@ -9,7 +9,7 @@ module RailsCodebook
         search
       else
         @codebook = codebook.all.paginate(page: params[:page])
-        render json: @codebook
+        render json: @codebook.cb_serialize
       end
     end
 
@@ -20,7 +20,7 @@ module RailsCodebook
         search
       else
         @codebook = codebook.find_all_by_cb_name(params[:cb_name])
-        render json: @codebook
+        render json: @codebook.cb_serialize
       end
     end
 
@@ -28,15 +28,15 @@ module RailsCodebook
     # /codebooks/cb_name/value
     def show
       @codebook = codebook.find(params[:id])
-      render json: @codebook
+      render json: @codebook.cb_serialize
     end
 
     # searching one of the codebooks
     # /codebooks?q=something
     # /codebooks/cb_name?q=something
     def search
-      @codebook = codebook.search(params[:q]).paginate(page: params[:page])
-      render json: @codebook
+      @codebook = codebook.find(:all, conditions: { name: params[:q]} ).paginate(page: params[:page])
+      render json: @codebook.cb_serialize
     end
 
   end

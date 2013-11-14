@@ -3,7 +3,6 @@ module RailsCodebook
   module Model
     
     class Base < RedisOrm::Base
-
       self.abstract_class = true
 
       # array  with value columns from the codebook
@@ -18,22 +17,25 @@ module RailsCodebook
 
       # searching through codebook with usage of i18n
       def self.search query_string, array=[]  
-        self.all.each {|redis_row| array << redis_row if I18n.t(redis_row.name) =~ /#{query_string}/i }; array
+        self.all.each {|redis_row| array << redis_row.codebook_format if I18n.t(redis_row.name) =~ /#{query_string}/i }; array
       end
 
-      # # osobitna metoda na listovanie vsetkych moznosti, nech neifujem a pod, nech je to priamociare
-      # def self.all_codebookify array=[]
-      #   self.all.each {|row| array << row.codebook_format}; array
-      # end
+      def cb_serialize
+        self.codebook_format
+      end
 
-      # # detto osobitna metoda na listovanie jednej moznosti, nech neifujem a pod, nech je to priamociare
-      # def self.codebookify id
-      #   [self.find(id).codebook_format]
-      # end
-
-      # def codebook_format
-      #   {value: self.value, name: I18n.t(self.name), cb_name: self.cb_name}
-      # end
+      def codebook_format
+        {
+          id: self.id, 
+          value: self.value, 
+          name: I18n.t(self.name), 
+          cb_name: self.cb_name, 
+          created_at: self.created_at, 
+          updated_at: self.updated_at, 
+          sequence: self.sequence,
+          deleted: self.deleted
+        }
+      end
       
     end
   

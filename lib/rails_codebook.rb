@@ -19,3 +19,9 @@ module RailsCodebook
     @@redis
   end
 end
+
+class Array
+  def cb_serialize array=[]
+    self.each { |row| array << row.cb_serialize }; array
+  end
+end

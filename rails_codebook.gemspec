@@ -18,10 +18,11 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
+  spec.add_dependency "redis"
+  
   spec.add_dependency "rails", "~> 4.0.0"
   spec.add_dependency "jquery-rails"
   spec.add_dependency "jquery-ui-rails"
-  spec.add_dependency "redis"
   spec.add_dependency 'uglifier'
   spec.add_dependency 'will_paginate'
   spec.add_dependency "less-rails"
