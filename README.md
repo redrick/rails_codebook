@@ -1,3 +1,5 @@
+# WORK in PROGRESS
+
 # RailsCodebook
 
 TODO: Write a gem description
