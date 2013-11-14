@@ -25,3 +25,11 @@ class Array
     self.each { |row| array << row.cb_serialize }; array
   end
 end
+
+class NilClass
+  def cb_serialize
+    return {
+      content: []
+    }
+  end
+end
