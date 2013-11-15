@@ -18,7 +18,7 @@ module RailsCodebook
         end
 
         def codebook_params
-          params.require(controller_name.singularize.to_sym).permit(:name,:value,:cb_name)
+          params.require(controller_name.singularize.to_sym).permit(:name, :value, :cb_name, :sequence, :deleted, :updated_at, :created_at)
         end
     end
   
