@@ -7,6 +7,7 @@ module RailsCodebook
       # GET /codebooks.json
       def index
         @codebooks = codebook.all
+        render @codebooks, layout: true
       end
 
       # GET /codebooks/1

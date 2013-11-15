@@ -1,4 +1,4 @@
-<%= form_for @codebook, url: {action: "create"} do |f| %>
+<%= form_for @codebook  do |f| %>
   <% if @codebook.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@codebook.errors.count, "error") %> prohibited this codebook from being saved:</h2>

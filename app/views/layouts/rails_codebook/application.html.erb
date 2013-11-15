@@ -7,7 +7,7 @@
     </title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <meta content="Fourmach.com" name="author"/>
-    <%= stylesheet_link_tag "redis_dictionary/application", media: nil %>
+    <%= stylesheet_link_tag "rails_codebook/application", media: nil %>
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements
     -->
     <!--[if lt IE 9]
@@ -18,25 +18,15 @@
   <body id="<%= controller.controller_name %>-<%= controller.action_name %>">
     <div class="container">
       <h1>
-        <a href="<%= translations_path %>"><%= yield(:title) %></a>
+        <a href="<%= 'sadsdas' %>"><%= #yield(:title) %></a>
       </h1>
 
-          <% if !RedisDictionary::configuration.menu_items.nil? %>
-            <div class="navbar">
-              <div class="navbar-inner">
-                <%RedisDictionary::configuration.menu_items.each do |name, query| %>
-                  <%= link_to name, translations_path(query: query), class: 'btn' %>
-                <% end %>
-              </div>
-            </div>
-          <% end %>
-
-      <%= yield %>
+      <%= # yield %>
     </div>
     <div id="footer">
       <div class="container">
       </div>
     </div>
-    <%= javascript_include_tag "redis_dictionary/application" %>
+    <%= javascript_include_tag "rails_codebook/application" %>
   </body>
 </html>
