@@ -26,6 +26,10 @@ module RailsCodebook
         end
       end
 
+      def all_codebooks
+        RailsCodebook::Codebook.all.uniq(&:cb_name)
+      end
+
       private
 
       def main_app_url_helper?(method)

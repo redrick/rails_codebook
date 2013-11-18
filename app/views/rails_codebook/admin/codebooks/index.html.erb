@@ -35,7 +35,7 @@
       <%= form_tag admin_codebooks_path, class: 'navbar-form pull-left', method: :get, id: 'search-form' do %>
         <%= text_field_tag :query, params[:query], hint: 'Search', placeholder: 'Search', autofocus: true %>
         <%= button_tag 'search', class: 'btn' %>
-        
+        <%= select_tag :cb_name, options_from_collection_for_select(all_codebooks, "cb_name", "cb_name", params[:cb_name]), include_blank: true %>
       <% end %>
 
       <div class="clear_button">

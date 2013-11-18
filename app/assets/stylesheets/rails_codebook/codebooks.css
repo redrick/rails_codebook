@@ -1,6 +1,7 @@
 .left_panel {width: 30%;float: left;padding-right: 10px;}
 .left_panel .navbar #search-form {padding-top: 15px;}
-.left_panel .navbar .clear_button {}
-.left_panel .navbar .new_button {}
+.left_panel .navbar #cb_name {width:95%;}
+.left_panel .navbar .clear_button { float: left;padding-right: 10px;padding-bottom: 20px; }
+.left_panel .navbar .new_button {width: 59px;float: left;}
 
 .right_panel {width: 65%;float: left;}

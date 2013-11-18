@@ -4,7 +4,17 @@ module RailsCodebook
       layout 'rails_codebook/application'
 
       def index
-        @codebooks = codebook.all.paginate(:page => params[:page], :per_page => 15)
+        unless params[:cb_name].blank?
+          @codebooks = codebook.find_all_by_cb_name(params[:cb_name]).to_a.paginate(:page => params[:page], :per_page => 15)
+        else
+          @codebooks = codebook.all.paginate(:page => params[:page], :per_page => 15)
+        end
+
+        unless params[:query].blank?
+          @codebooks = (params[:query] == '*') ? \
+            @codebooks.select{|j| I18n.t(j.name) =~ /^#{params[:query]}$/}.paginate(:page => params[:page], :per_page => 15) : \
+            @codebooks.select{|j| I18n.t(j.name) =~ /#{params[:query]}/}.paginate(:page => params[:page], :per_page => 15)
+        end
 
         respond_to do |format|
           format.html { 
