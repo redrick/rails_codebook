@@ -1,14 +1,9 @@
 $('#add-codebook').modal('hide');
-binding.pry
-partial = '<%= escape_javascript(render 'codebook', value: @digest) %>';
-codebook = "#codebook_<%= @digest %>";
+partial = '<%= escape_javascript(render 'codebook', id: @codebook.id) %>';
+codebook = "#codebook_<%= @codebook.id %>";
 
 if( $(codebook).size() > 0 ){
-
   $(codebook).replaceWith(partial);
-
 } else {
-
-  $('#codebooks-table tbody').prepend(' <%= escape_javascript(render 'codebook', value: @digest) %> ');
-
+  $('#codebooks-table tbody').prepend(' <%= escape_javascript(render 'codebook', id: @codebook.id ) %> ');
 }

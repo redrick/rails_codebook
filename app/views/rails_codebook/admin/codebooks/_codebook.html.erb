@@ -1,6 +1,22 @@
-<tr id="codebook_<%= RailsCodebook::Codebook.digest_key(value) %>">
+<% codebook ||= @codebook %>
+<tr id="codebook_<%= id %>">
   <td>
-    <%= codebook.id %>
+    <div class="btn-group">
+      <a class="btn btn-primary" href="#"><i class="icon-book icon-white"> </i><%= codebook.id %></a>
+      <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li>
+          <%= link_to '#', id: "#{codebook.id}", data: {id: codebook.id, value: codebook.value, name: codebook.name, sequence: codebook.sequence, deleted: codebook.deleted, cb_name: codebook.cb_name, toggle: "modal", target: '#add-codebook'}, class: "edit-codebook" do %>
+            <i class="icon-pencil"></i> Edit
+          <% end %>
+        </li>
+        <li> 
+          <%= link_to admin_codebook_path(codebook.id), id: "destroy-#{codebook.id}", method: :delete, data: {confirm: "Do you really want to proceed ?"}, remote: true do %>
+            <i class="icon-trash"></i> Delete
+          <% end %>
+        </li>
+      </ul>
+    </div>
   </td>
   <td>
     <%= codebook.value %>

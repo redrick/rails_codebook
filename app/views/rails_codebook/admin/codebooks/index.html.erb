@@ -9,25 +9,26 @@
     <div class="row">
       <%= form_tag admin_codebooks_path, id: 'form-codebook', remote: true do %>
         <div class="span4">
-          <%= label_tag "codebook[:value]", "Value" %>
-          <%= text_field_tag "codebook[:value]", '', class: 'span4', autofocus: true %>
+          <%= label_tag "codebook[value]", "Value" %>
+          <%= text_field_tag "codebook[value]", '', class: 'span4', autofocus: true %>
         </div>
         <div class="span5">
-          <%= label_tag "codebook[:name]", "Name" %>
-          <%= text_field_tag "codebook[:name]", '', class: 'span4' %>
+          <%= label_tag "codebook[name]", "Name" %>
+          <%= text_field_tag "codebook[name]", '', class: 'span4' %>
         </div>
         <div class="span5">
-          <%= label_tag "codebook[:cb_name]", "Codebook name" %>
-          <%= text_field_tag "codebook[:cb_name]", '', class: 'span4' %>
+          <%= label_tag "codebook[cb_name]", "Codebook name" %>
+          <%= text_field_tag "codebook[cb_name]", '', class: 'span4' %>
         </div>
         <div class="span1">
-          <%= label_tag "codebook[:sequence]", "Sequence" %>
-          <%= text_field_tag "codebook[:sequence]", '100', class: 'span1' %>
+          <%= label_tag "codebook[sequence]", "Sequence" %>
+          <%= text_field_tag "codebook[sequence]", '100', class: 'span1' %>
         </div>
         <div class="span4">
-          <%= label_tag "codebook[:deleted]", "Deleted" %>
-          <%= text_field_tag "codebook[:deleted]", '0', class: 'span1' %>
+          <%= label_tag "codebook[deleted]", "Deleted" %>
+          <%= text_field_tag "codebook[deleted]", '0', class: 'span1' %>
         </div>
+          <%= hidden_field_tag 'codebook[id]', ''%>
         <div class="span2">
           <br />
           <%= button_tag "Submit", class: 'btn' %>
@@ -76,7 +77,7 @@
     </thead>
     <tbody>
       <% @codebooks.each do |codebook| %>
-        <%= render 'codebook', codebook: codebook, value: codebook.id.to_s %>
+        <%= render 'codebook', codebook: codebook, id: codebook.id %>
       <% end %>
     </tbody>
   </table>

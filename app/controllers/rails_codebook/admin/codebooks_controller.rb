@@ -25,29 +25,32 @@ module RailsCodebook
       end
 
       def create
-        @codebook = codebook.create(codebook_params)
+        unless params[:codebook][:id].blank?
+          @codebook = RailsCodebook::Codebook.find(params[:codebook][:id])
+          @codebook.update_attributes(params[:codebook])
+        else
+          @codebook = RailsCodebook::Codebook.create(params[:codebook])
+        end
 
         respond_to do |format|
-          format.js{
-            @digest = RailsCodebook::Codebook.digest_key(@codebook.id.to_s)
-          }
+          format.js
           format.html{
-            redirect_to admin_codebooks_path, :notice => "Successfully added codebook row"
+            redirect_to admin_codebooks_path
           }
         end
 
       end
 
-        # def destroy
-        #   codebook.destroy(params[:id])
-        #   respond_to do |format|
-        #     format.js
-        #     format.html{
-        #       redirect_to redis_dictionary_root_path, :notice => "Key deleted"
-        #     }
-        #   end
+      def destroy
+        codebook.find(params[:id]).destroy
+        respond_to do |format|
+          format.js
+          format.html{
+            redirect_to admin_codebooks_path
+          }
+        end
 
-        # end
+      end
 
 
       private

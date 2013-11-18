@@ -5,8 +5,10 @@
 .left_panel .navbar .new_button {width: 59px;float: left;}
 
 .right_panel {width: 65%;float: left;}
+.right_panel .btn.btn-primary.dropdown-toggle {height:20px;}
 
 .apple_pagination {
+  width: 99%;
   background: #f1f1f1;
   border: 1px solid #e5e5e5;
   text-align: center;
@@ -34,11 +36,6 @@
     .apple_pagination a:hover, .apple_pagination a:focus {
       text-decoration: underline; }
 
-
-#footer {
-  min-height:60px;
-  background-color: #333;
-}
 
 .flr {
   float:right;
