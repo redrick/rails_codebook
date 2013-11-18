@@ -25,7 +25,9 @@
     <%= I18n.t(!codebook.name.blank? ? codebook.name : "name.missing") %>
   </td>
   <td>
-    <%= codebook.cb_name %>
+    <a href="<%= admin_codebooks_path(cb_name: codebook.cb_name) %>">
+      <%= codebook.cb_name %>
+    </a>
   </td>
   <td>
     <%= codebook.sequence %>
@@ -34,9 +36,9 @@
     <%= codebook.deleted %>
   </td>
   <td>
-    <%= codebook.created_at.to_s %>
+    <%= codebook.created_at.to_s(:short) %>
   </td>
   <td>
-    <%= codebook.updated_at.to_s %>
+    <%= codebook.updated_at.to_s(:short) %>
   </td>
 </tr>
