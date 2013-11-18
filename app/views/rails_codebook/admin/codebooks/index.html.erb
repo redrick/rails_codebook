@@ -1,4 +1,4 @@
-<% title "Translations" %>
+<% title "Codebooks" %>
 
 <div id="add-translation" class="modal hide fade">
   <div class="modal-header">
@@ -7,7 +7,7 @@
   </div>
   <div class="modal-body">
     <div class="row">
-      <%= form_tag translations_path, id: 'form-translation', remote: true do %>
+      <%= form_tag admin_codebooks_path, id: 'form-translation', remote: true do %>
         <div class="span1">
           <%= label_tag :locale %>
           <%= text_field_tag :locale, '', class: 'span1', autofocus: true %>
@@ -29,41 +29,52 @@
   </div>
 </div>
 
-<div class="navbar">
-  <div class="navbar-inner">
-    <%= form_tag translations_path, class: 'navbar-form pull-left', method: :get, id: 'search-form' do %>
-      <%= text_field_tag :query, params[:query], hint: 'Search', placeholder: 'Search', autofocus: true %>
-      <%= button_tag 'search', class: 'btn' %>
-      <%= link_to 'clear', translations_path, class: 'btn' %>
-    <% end %>
-    <div class="pull-right">
-      <%= link_to 'new', '#', data: { toggle: "modal", target: '#add-translation'}, id: 'add-translation-link', class: 'btn' %>
+<div class="left_panel">
+  <div class="navbar">
+    <div class="navbar-inner">
+      <%= form_tag admin_codebooks_path, class: 'navbar-form pull-left', method: :get, id: 'search-form' do %>
+        <%= text_field_tag :query, params[:query], hint: 'Search', placeholder: 'Search', autofocus: true %>
+        <%= button_tag 'search', class: 'btn' %>
+        
+      <% end %>
+
+      <div class="clear_button">
+        <%= link_to 'clear', admin_codebooks_path, class: 'btn' %>
+      </div>
+
+      <div class="new_button">
+        <%= link_to 'new', '#', data: { toggle: "modal", target: '#add-translation'}, id: 'add-translation-link', class: 'btn' %>
+      </div>
+
     </div>
   </div>
 </div>
-<hr/>
 
-<div class="apple_pagination">
-  <%= will_paginate @translations, :container => false %>
-</div>
+<div class="right_panel">
+  <div class="apple_pagination">
+    <%= will_paginate @codebooks, :container => false %>
+  </div>
 
-<table class="table table-hover" id="translations-table">
-  <thead>
-    <th>key</th>
-    <% I18n.available_locales.each do |locale| %>
-      <th>
-        <%= locale %>
-      </th>
-    <% end %>
-  </thead>
-  <tbody>
-    <% @translations.each do |key| %>
-      <%= render 'codebook_line', key: key %>
-    <% end %>
-  </tbody>
-</table>
+  <table class="table table-hover" id="codebooks-table">
+    <thead>
+      <th>#ID</th>
+      <th>value</th>
+      <th>name</th>
+      <th>cb_name</th>
+      <th>sequence</th>
+      <th>deleted</th>
+      <th>created_at</th>
+      <th>updated_at</th>
+    </thead>
+    <tbody>
+      <% @codebooks.each do |codebook| %>
+        <%= render 'codebook', codebook: codebook %>
+      <% end %>
+    </tbody>
+  </table>
 
 
-<div class="apple_pagination">
-  <%= will_paginate @translations, :container => false %>
+  <div class="apple_pagination">
+    <%= will_paginate @codebooks, :container => false %>
+  </div>
 </div>

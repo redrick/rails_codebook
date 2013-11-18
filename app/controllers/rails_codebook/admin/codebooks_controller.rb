@@ -4,7 +4,7 @@ module RailsCodebook
       layout 'rails_codebook/application'
 
       def index
-        @codebooks = codebook.all
+        @codebooks = codebook.all.paginate(:page => params[:page], :per_page => 15)
 
         respond_to do |format|
           format.html { 

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8"/>
     <title>
-      <%= content_for?(:title) ? (yield(:title) + " - I18n Dashboard") : "I18n Dashboard" %>
+      <%= content_for?(:title) ? (yield(:title) + " - Rails Codebook") : "Rails Codebook" %>
     </title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <meta content="Fourmach.com" name="author"/>
@@ -16,13 +16,16 @@
     <%= csrf_meta_tag %>
   </head>
   <body id="<%= controller.controller_name %>-<%= controller.action_name %>">
+
     <div class="container">
       <h1>
-        <a href="<%= 'sadsdas' %>"><%= yield(:title) %></a>
+        <a href="<%= admin_codebooks_path %>"><%= yield(:title) %></a>
       </h1>
 
       <%= yield %>
+    
     </div>
+
     <div id="footer">
       <div class="container">
       </div>

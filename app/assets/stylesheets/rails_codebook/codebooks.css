@@ -1,0 +1,6 @@
+.left_panel {width: 30%;float: left;padding-right: 10px;}
+.left_panel .navbar #search-form {padding-top: 15px;}
+.left_panel .navbar .clear_button {}
+.left_panel .navbar .new_button {}
+
+.right_panel {width: 65%;float: left;}
