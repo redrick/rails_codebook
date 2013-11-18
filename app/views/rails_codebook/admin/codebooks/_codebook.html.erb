@@ -1,0 +1,22 @@
+<tr id="translation_key_<%= RedisDictionary::Translation.digest_key(key) %>">
+  <td>
+    <%= key %>
+  </td>
+  <% I18n.available_locales.each do |locale| %>
+    <td>
+      <%= link_to '#', id: "#{locale}.#{key}", data: {key: key, locale: locale, toggle: "modal", target: '#add-translation'}, class: "edit-translation #{(RedisDictionary::Translation.exists?(key, locale) ? nil : 'text-error')}" do %>
+        <%= t(key, locale: locale, default: humanize_key(key) ) %>
+      <% end %>
+    </td>
+  <% end %>
+  <td>
+    <% unless RedisDictionary::Translation.system_key?(key) %>
+      <%= link_to translation_path(RedisDictionary::Translation.digest_key(key)), id: "destroy-#{RedisDictionary::Translation.digest_key(key)}", method: :delete, class: 'btn btn-small btn-danger flr', data: {confirm: "Do you really want to proceed ?"}, remote: true do %>
+        <span class="hidden">destroy</span>
+        <i class="icon-trash"></i>
+      <% end %>
+    <% else %>
+        <div class="btn btn-inverse btn-mini flr">Framework</div>
+    <% end %>
+  </td>
+</tr>

@@ -1,6 +1,7 @@
 module RailsCodebook
 
-  class Codebook < RailsCodebook::Model::Base
+  class Codebook < RailsCodebook::Base
+
     before_create :set_created_at
     before_save :set_updated_at
 
@@ -39,6 +40,7 @@ module RailsCodebook
       def set_updated_at
         self.updated_at = Time.now.to_s(:db)
       end
+      
   end
 
 end
