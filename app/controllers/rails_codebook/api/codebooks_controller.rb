@@ -1,6 +1,6 @@
 module RailsCodebook
   module Api
-    class CodebooksController < RailsCodebook::Base
+    class CodebooksController < RailsCodebook::Controller::Base
 
       # index for all codebooks
       # /codebooks

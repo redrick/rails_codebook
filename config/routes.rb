@@ -10,8 +10,7 @@ RailsCodebook::Engine.routes.draw do
   end
 
   namespace :admin do
-    resources :codebooks  
-    # admin_codebooks_path        GET     /admin/codebooks(.:format)            rails_codebook/admin/codebooks#index
+    get '/(:lang)' => 'codebooks#index', as: :admin_codebooks_path
     #                             POST    /admin/codebooks(.:format)            rails_codebook/admin/codebooks#create  
     # new_admin_codebook_path     GET     /admin/codebooks/new(.:format)        rails_codebook/admin/codebooks#new
     # edit_admin_codebook_path    GET     /admin/codebooks/:id/edit(.:format)   rails_codebook/admin/codebooks#edit

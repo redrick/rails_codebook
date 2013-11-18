@@ -8,6 +8,9 @@ require "rails_codebook/version"
 require "rails_codebook/engine"
 require "rails_codebook/has_codebooks"
 
+require "rails_codebook/model/base"
+require "rails_codebook/controller/base"
+
 module RailsCodebook
   extend self
  

@@ -1,13 +1,13 @@
 module RailsCodebook
   module Admin
-    class CodebooksController < RailsCodebook::Base
+    class CodebooksController < RailsCodebook::Controller::Base
 
       def index
         @codebooks = codebook.all
 
         respond_to do |format|
           format.html { 
-            render @codebooks
+            render @codebooks, layout: true
           }
         end
       end
