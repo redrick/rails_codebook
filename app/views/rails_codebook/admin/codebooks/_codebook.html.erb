@@ -1,5 +1,26 @@
-<tr>
-  <td colspan="8">
-    <%= codebook %>
+<tr id="codebook_<%= RailsCodebook::Codebook.digest_key(value) %>">
+  <td>
+    <%= codebook.id %>
+  </td>
+  <td>
+    <%= codebook.value %>
+  </td>
+  <td>
+    <%= I18n.t(!codebook.name.blank? ? codebook.name : "name.missing") %>
+  </td>
+  <td>
+    <%= codebook.cb_name %>
+  </td>
+  <td>
+    <%= codebook.sequence %>
+  </td>
+  <td>
+    <%= codebook.deleted %>
+  </td>
+  <td>
+    <%= codebook.created_at.to_s %>
+  </td>
+  <td>
+    <%= codebook.updated_at.to_s %>
   </td>
 </tr>

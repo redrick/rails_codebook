@@ -1,6 +1,7 @@
 module RailsCodebook
   module Admin
     class CodebooksController < RailsCodebook::Controller::Base
+      respond_to :html, :js
       layout 'rails_codebook/application'
 
       def index
@@ -23,16 +24,19 @@ module RailsCodebook
         end
       end
 
-        # def create
+      def create
+        @codebook = codebook.create(codebook_params)
 
-        #   codebook.create(params[:key], params[:value], params[:locale])
-        #   respond_to do |format|
-        #     format.html{
-        #       redirect_to redis_dictionary_root_path, :notice => "Added translations"
-        #     }
-        #   end
+        respond_to do |format|
+          format.js{
+            @digest = RailsCodebook::Codebook.digest_key(@codebook.id.to_s)
+          }
+          format.html{
+            redirect_to admin_codebooks_path, :notice => "Successfully added codebook row"
+          }
+        end
 
-        # end
+      end
 
         # def destroy
         #   codebook.destroy(params[:id])

@@ -1,14 +1,14 @@
-$('#add-translation').modal('hide');
+$('#add-codebook').modal('hide');
+binding.pry
+partial = '<%= escape_javascript(render 'codebook', value: @digest) %>';
+codebook = "#codebook_<%= @digest %>";
 
-partial = '<%= escape_javascript(render 'key_translation', key: params[:key]) %>';
-translation_key = "#translation_key_<%= @digest %>";
+if( $(codebook).size() > 0 ){
 
-if( $(translation_key).size() > 0 ){
-
-  $(translation_key).replaceWith(partial);
+  $(codebook).replaceWith(partial);
 
 } else {
 
-  $('#translations-table tbody').prepend(' <%= escape_javascript(render 'key_translation', key: params[:key]) %> ');
+  $('#codebooks-table tbody').prepend(' <%= escape_javascript(render 'codebook', value: @digest) %> ');
 
 }

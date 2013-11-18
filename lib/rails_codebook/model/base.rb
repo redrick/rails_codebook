@@ -40,6 +40,10 @@ module RailsCodebook
       def to_partial_path
         "codebooks/codebook"
       end
+
+      def self.digest_key(value)
+        Digest::MD5.hexdigest(value)
+      end
       
     end
   
