@@ -38,19 +38,25 @@ class << ActiveRecord::Base
       # get the options just for the one codebook
       cb_options = options["#{column_name}"] || []
       fk_cb =  options["fk_cb"]
+      
+      base_method_name = column_name.gsub("_cb", "")
 
       unless cb_options.empty?
-        codebook_name = cb_options["cb_format"]+"_"+self.table_name+"_"+column_name.pluralize if codebook_name == "polymorphic"
+        codebook_name = cb_options["cb_format"]+"_"+self.table_name.singularize+"_"+base_method_name.pluralize if codebook_name == "polymorphic"
         fk_cb =  cb_options["fk_cb"]
       end
 
-      base_method_name = column_name.gsub("_cb", "")
 
       # method for getting the one row referenced from model as object (something_object)
       define_method (base_method_name+"_object").to_sym do |hash={}|
         all = RailsCodebook::Codebook.search(params[:page], "cb_name", codebook_name, true)
         all.each {|row| return row if row.send(fk_cb) == self.send(column_name) }; hash
       end
+
+      # method for getting the one row referenced from model as json (something)
+      define_method (base_method_name+"_codebook_name").to_sym do
+        codebook_name
+      end  
 
       # method for getting the one row referenced from model as json (something)
       define_method base_method_name.to_sym do
