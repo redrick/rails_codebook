@@ -14,7 +14,7 @@ class << ActiveRecord::Base
   #      }
   #    })
   #  end
-  def has_codebooks params={}
+  def has_codebooks params={}, options={}
 
     #  options given in model definition
     # "cb_format" => manually defined how to find codebook
@@ -29,14 +29,20 @@ class << ActiveRecord::Base
     #      }
     #    })
     #  end
-    options = params["options"]
-    params.delete("options")
-    options["fk_cb"] = "value" unless options["fk_cb"]
-    
+
+    # default value, if not entered
+    options["fk_cb"] = "value"
+
+    if params.include? "options"
+      options = params["options"]
+      params.delete("options")
+      options["fk_cb"] = options["fk_cb"] if options.include? "fk_cb"
+    end
+      
     params.each do |column_name, codebook_name|
 
       # get the options just for the one codebook
-      cb_options = options["#{column_name}"] || []
+      cb_options = (options.include?("#{column_name}")) ? options["#{column_name}"] : []
       fk_cb =  options["fk_cb"]
       
       base_method_name = column_name.gsub("_cb", "")
