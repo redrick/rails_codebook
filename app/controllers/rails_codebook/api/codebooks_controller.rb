@@ -9,7 +9,7 @@ module RailsCodebook
         if params[:q]
           search 
         else
-          render json: @codebook.cb_serialize(params[:format])
+          render json: @codebooks.cb_serialize(params[:format])
         end
       end
 
