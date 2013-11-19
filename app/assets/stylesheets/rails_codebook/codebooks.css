@@ -7,6 +7,8 @@
 .right_panel {width: 65%;float: left;}
 .right_panel .btn.btn-primary.dropdown-toggle {height:20px;}
 
+.red {color:red;}
+
 .apple_pagination {
   width: 99%;
   background: #f1f1f1;

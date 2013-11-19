@@ -6,15 +6,15 @@ module RailsCodebook
 
       def index
         unless params[:cb_name].blank?          
-          @codebooks = codebook.all.select{|j| j.cb_name =~ /^#{params[:cb_name]}$/i}.paginate(:page => params[:page], :per_page => 15)
+          @codebooks = RailsCodebook::Codebook.search(params[:page], 'cb_name', params[:cb_name], true)
         else
-          @codebooks = codebook.all.paginate(:page => params[:page], :per_page => 15)
+          @codebooks = RailsCodebook::Codebook.search(params[:page])
         end
 
         unless params[:query].blank?
           @codebooks = (params[:query] == '*') ? \
-            @codebooks.select{|j| I18n.t(j.name) =~ /^#{params[:query]}$/i}.paginate(:page => params[:page], :per_page => 15) : \
-            @codebooks.select{|j| I18n.t(j.name) =~ /#{params[:query]}/i}.paginate(:page => params[:page], :per_page => 15)
+            @codebooks = RailsCodebook::Codebook.search(params[:page], 'name', params[:query], true, @codebooks) : \
+            @codebooks = RailsCodebook::Codebook.search(params[:page], 'name', params[:query], false, @codebooks)
         end
 
         respond_to do |format|

@@ -5,10 +5,10 @@ module RailsCodebook
       # index for all codebooks
       # /codebooks
       def index
+        @codebooks = codebook.all.paginate(page: params[:page])
         if params[:q]
-          search
+          search 
         else
-          @codebook = codebook.all.paginate(page: params[:page])
           render json: @codebook.cb_serialize
         end
       end
@@ -16,11 +16,11 @@ module RailsCodebook
       # index showing only one codebook
       # /codebooks/cb_name
       def codebook_index
+        @codebooks = RailsCodebook::Codebook.search(params[:page], 'cb_name', params[:cb_name], true)
         if params[:q]
           search
         else
-          @codebook = codebook.find_all_by_cb_name(params[:cb_name])
-          render json: @codebook.cb_serialize
+          render json: @codebooks.cb_serialize
         end
       end
 
@@ -35,8 +35,8 @@ module RailsCodebook
       # /codebooks?q=something
       # /codebooks/cb_name?q=something
       def search
-        @codebook = codebook.find(:all, conditions: { name: params[:q]} ).paginate(page: params[:page])
-        render json: @codebook.cb_serialize
+        @codebooks = RailsCodebook::Codebook.search(params[:page], 'name', params[:q], false, @codebooks)
+        render json: @codebooks.cb_serialize
       end
     end
   end
