@@ -11,8 +11,11 @@ require "rails_codebook/has_codebooks"
 require "rails_codebook/model/base"
 require "rails_codebook/controller/base"
 
+
 module RailsCodebook
   extend self
+
+  require 'rails_codebook/railtie' if defined?(Rails)
  
   attr_accessor :redis
   @@redis = Redis.new
