@@ -28,13 +28,19 @@ module RailsCodebook
 end
 
 class Array
-  def cb_serialize array=[]
-    self.each { |row| array << row.cb_serialize }; array
+  def cb_serialize format=:codebook_format, array=[]
+    self.each { |row| array << row.cb_serialize(format) }; array
+  end
+end
+
+class Hash
+  def cb_serialize format=:codebook_format, array=[]
+    self.each { |row| array << row.cb_serialize(format) }; array
   end
 end
 
 class NilClass
-  def cb_serialize
+  def cb_serialize format=:codebook_format
     return {
       content: []
     }

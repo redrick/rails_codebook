@@ -31,8 +31,9 @@ module RailsCodebook
         end
       end
 
-      def cb_serialize
-        self.codebook_format
+      def cb_serialize format=:codebook_format
+        format = :codebook_format if format.nil? 
+        self.send(format)
       end
 
       def codebook_format
@@ -46,6 +47,19 @@ module RailsCodebook
           sequence: self.sequence,
           deleted: self.deleted
         }
+      end
+
+      # possible formats for collection (selectbox style) : 
+      #   collection_id
+      #   collection_value
+      # I dont see why anyone would use other.... :)
+      ['id','value'].each do |attrib|
+        define_method "collection_#{attrib}".to_sym do
+          { 
+            "#{attrib}".to_sym => self.send(attrib), 
+            :name => I18n.t(self.name)
+          }
+        end
       end
 
       def to_partial_path
