@@ -1,2 +1,11 @@
 en:
-  hello: "world"
+  name:
+    missing: "No translation key given"
+  codebook:
+    boolean:
+      'yes': 'Yes'
+      'no': 'No'
+    importance:
+      low: 'Low'
+      medium: 'Medium'
+      high: 'High'

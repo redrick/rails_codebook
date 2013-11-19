@@ -1,2 +1,11 @@
 cs:
-  ahoj: "svet" 
+  name:
+    missing: "Není zadana překladová kotva"
+  codebook:
+    boolean:
+      'yes': 'ano'
+      'no': 'ne'
+    importance:
+      low: 'nízká'
+      medium: 'střední'
+      high: 'vysoká'
