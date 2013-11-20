@@ -39,6 +39,20 @@ class << ActiveRecord::Base
       options["fk_cb"] = options["fk_cb"] if options.include? "fk_cb"
     end
       
+    ##
+    #
+    # self _values [a,b,c]
+    # self _keys   [1,2,3]
+    # self _all {{cb},{cb},{cb}}
+    # "" {json}
+    # _collection {{cb},{cb}}
+    # _object Object
+    # _object_all [Object,Object]
+    # _this {cb}
+    # _codebook_name "cb_name"
+    #
+    ##
+      
     params.each do |column_name, codebook_name|
 
       # get the options just for the one codebook
@@ -85,12 +99,12 @@ class << ActiveRecord::Base
       end    
 
       # method for getting the array of i18ned names of cb rows (something_names)
-      define_singleton_method (base_method_name+"_names").to_sym do |array=[]|
+      define_singleton_method (base_method_name+"_values").to_sym do |array=[]|
         RailsCodebook::Codebook.search(params[:page], "cb_name", codebook_name, true).each {|cb| array << I18n.t(cb.name) }; array
       end      
 
       # method for getting the array of values of cb rows (something_values)
-      define_singleton_method (base_method_name+"_values").to_sym do
+      define_singleton_method (base_method_name+"_keys").to_sym do
         RailsCodebook::Codebook.search(params[:page], "cb_name", codebook_name, true).map(&:value)
       end      
 
