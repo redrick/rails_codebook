@@ -2,7 +2,7 @@ module RailsCodebook
 
   module Model
     
-    class Base < RedisOrm::Base
+    class Base < ::RedisOrm::Base
       self.abstract_class = true
 
       # array  with value columns from the codebook
