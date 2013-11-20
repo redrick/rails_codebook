@@ -11,7 +11,6 @@ class << ActiveRecord::Base
   #  end
   def acts_as_codebook params={}, options={}
 
-    binding.pry
     ##
     #
     # self _values [a,b,c]
@@ -21,28 +20,32 @@ class << ActiveRecord::Base
     # 
     ##
 
-    # base_method_name = self
+    base_method_name = self.class.name.downcase
 
-    # method for getting the array of i18ned names of cb rows (something_names)
     define_singleton_method (base_method_name+"_keys").to_sym do |array=[]|
+      1
+      # RailsCodebook::Codebook.search(params[:page], "cb_name", codebook_name, true).each {|cb| array << I18n.t(cb.name) }; array
+    end 
+
+    define_singleton_method (base_method_name+"_cb_name").to_sym do
+      base_method_name
       # RailsCodebook::Codebook.search(params[:page], "cb_name", codebook_name, true).each {|cb| array << I18n.t(cb.name) }; array
     end      
 
-    # method for getting the array of values of cb rows (something_values)
     define_singleton_method (base_method_name+"_values").to_sym do
+      2
       # RailsCodebook::Codebook.search(params[:page], "cb_name", codebook_name, true).map(&:value)
     end      
 
-    # method for getting the array of values of cb rows (something_values)
     define_singleton_method (base_method_name+"_cb_all").to_sym do
+      3
       # RailsCodebook::Codebook.search(params[:page], "cb_name", codebook_name, true).map(&:value)
     end      
 
-    # method for getting the array of values of cb rows (something_values)
     define_singleton_method (base_method_name+"_cb_object").to_sym do
+      4
       # RailsCodebook::Codebook.search(params[:page], "cb_name", codebook_name, true).map(&:value)
     end      
-
 
   end
 

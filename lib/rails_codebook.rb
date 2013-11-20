@@ -7,6 +7,7 @@ require 'will_paginate'
 require "rails_codebook/version"
 require "rails_codebook/engine"
 require "rails_codebook/has_codebooks"
+require "rails_codebook/acts_as_codebook"
 
 require "rails_codebook/model/base"
 require "rails_codebook/controller/base"
@@ -14,8 +15,6 @@ require "rails_codebook/controller/base"
 
 module RailsCodebook
   extend self
-
-  require 'rails_codebook/railtie' if defined?(Rails)
  
   attr_accessor :redis
   @@redis = Redis.new
