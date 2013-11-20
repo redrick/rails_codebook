@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["redrick"]
   spec.email         = ["andrej.antas@gmail.com"]
   spec.description   = "Codebook solution we all use in our projects"
-  spec.summary       = "Codebook solution we all use in our projects"
-  spec.homepage      = ""
+  spec.summary       = "Codebook solution we all use in our projects."
+  spec.homepage      = "https://github.com/redrick/rails_codebook"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
