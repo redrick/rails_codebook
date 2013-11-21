@@ -36,5 +36,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "minitest-rails"
   spec.add_development_dependency "minitest-rails-capybara"
   spec.add_development_dependency "factory_girl_rails"
-  spec.add_development_dependency "rake"
+
+  spec.add_dependency "rake"
 end
