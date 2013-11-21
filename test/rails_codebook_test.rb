@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class HasCodebooksTest < ActiveSupport::TestCase
+class RailsCodebooksTest < ActiveSupport::TestCase
 
   # TODO testovat
   test "search" do

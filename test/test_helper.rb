@@ -16,9 +16,10 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
 ]
 
 SimpleCov.start do
-  add_filter "/test/"
-  add_filter "/config/"
-  add_filter "/script/"
+  filters.clear # This will remove the :root_filter that comes via simplecov's defaults
+  add_filter do |src|
+    !(src.filename =~ /^#{SimpleCov.root}/) unless src.filename =~ /rails_codebook/
+  end
 end
 
 FactoryGirl.definition_file_paths = %w(test/factories/ test/dummy/test/factories)
