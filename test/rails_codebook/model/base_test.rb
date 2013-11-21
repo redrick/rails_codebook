@@ -6,12 +6,12 @@ module RailsCodebook
 
     class BaseTest < ActiveSupport::TestCase
 
-      # TODO testovat
-      test "search" do
+      test "test search" do
+
       end
 
     end
 
   end
-  
+
 end

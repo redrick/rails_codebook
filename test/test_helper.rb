@@ -16,13 +16,15 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
 ]
 
 SimpleCov.start do
-  filters.clear # This will remove the :root_filter that comes via simplecov's defaults
-  add_filter do |src|
-    !(src.filename =~ /^#{SimpleCov.root}/) unless src.filename =~ /rails_codebook/
-  end
+  # filters.clear # This will remove the :root_filter that comes via simplecov's defaults
+  # add_filter do |src|
+  #   !(src.filename =~ /^#{SimpleCov.root}/) unless src.filename =~ /rails_codebook/
+  # end
+  add_filter '/test/'
+  add_filter '/config/'
 end
 
-FactoryGirl.definition_file_paths = %w(test/factories/ test/dummy/test/factories)
+FactoryGirl.definition_file_paths = %w(test/factories test/dummy/test/factories)
 FactoryGirl.find_definitions
 
 # Run migrations
@@ -31,12 +33,11 @@ db_path = File.expand_path("../dummy/db/test.sqlite3/", __FILE__)
 ActiveRecord::Migrator.migrate File.expand_path("../dummy/db/migrate/", __FILE__)
 
 class ActionController::TestCase
-  include RailsCodebook::Engine.routes.url_helpers
   include FactoryGirl::Syntax::Methods
 end
 
 class ActionDispatch::IntegrationTest
   include Capybara::DSL
   include FactoryGirl::Syntax::Methods
-
+  include RailsCodebook::Engine.routes.url_helpers
 end

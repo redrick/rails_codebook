@@ -6,7 +6,6 @@ module RailsCodebook
 
     class BaseTest < ActiveSupport::TestCase
 
-      # TODO testovat
       test "search" do
       end
 
