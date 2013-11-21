@@ -29,6 +29,12 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'twitter-bootstrap-rails'
   spec.add_dependency 'sqlite3'
 
+  spec.add_development_dependency 'sqlite3'
+  spec.add_development_dependency "simplecov"
+  spec.add_development_dependency "coveralls"
   spec.add_development_dependency "bundler", "~> 1.3"
+  spec.add_development_dependency "minitest-rails"
+  spec.add_development_dependency "minitest-rails-capybara"
+  spec.add_development_dependency "factory_girl_rails"
   spec.add_development_dependency "rake"
 end
