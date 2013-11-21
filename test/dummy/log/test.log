@@ -1,0 +1,25 @@
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+-------------------------------------------
+RailsCodebook::Model::BaseTest: test_search
+-------------------------------------------
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+-------------------------------
+ActsAsCodebookTest: test_search
+-------------------------------
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+-----------------------------
+HasCodebooksTest: test_search
+-----------------------------
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+------------------------------------------------
+RailsCodebook::Controller::BaseTest: test_search
+------------------------------------------------
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+-------------------------------------------
+RailsCodebook::Model::BaseTest: test_search
+-------------------------------------------
+  [1m[35m (0.1ms)[0m  rollback transaction
