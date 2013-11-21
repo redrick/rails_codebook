@@ -1,11 +1,12 @@
 ENV["RAILS_ENV"] = "test"
-require File.expand_path("../../config/environment", __FILE__)
+require File.expand_path("../dummy/config/environment", __FILE__)
 
 require "rails/test_help"
 require 'minitest/autorun'
 require "minitest/rails/capybara"
 require 'simplecov'
 require 'coveralls'
+require 'factory_girl'
 
 Coveralls.wear!
 
@@ -23,23 +24,12 @@ end
 FactoryGirl.definition_file_paths = %w(test/support/)
 FactoryGirl.find_definitions
 
-class MiniTest::Spec
+class ActionController::TestCase
+  include RailsCodebook::Engine.routes.url_helpers
+  include FactoryGirl::Syntax::Methods
+end
+
+class ActionDispatch::IntegrationTest
   include Capybara::DSL
-  include Rails.application.routes.url_helpers
-  include FactoryGirl::Syntax::Methods
-
-  @@flag ||= nil
-
-  unless @@flag
-    @@flag = true
-    FileUtils.rm_rf("#{Rails.root}/datafiles/test")
-    load "#{Rails.root}/db/seeds.rb"
-  end
-
-end
-
-
-class ActiveSupport::TestCase
   include FactoryGirl::Syntax::Methods
 end
-

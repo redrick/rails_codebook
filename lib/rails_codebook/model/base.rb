@@ -1,3 +1,5 @@
+require 'redis_orm'
+
 module RailsCodebook
 
   module Model
