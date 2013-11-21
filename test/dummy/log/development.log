@@ -1,0 +1,1173 @@
+
+
+Started GET "/" for 127.0.0.1 at 2013-11-21 15:05:20 +0100
+
+ActiveRecord::PendingMigrationError (Migrations are pending; run 'bin/rake db:migrate RAILS_ENV=development' to resolve this issue.):
+  activerecord (4.0.1) lib/active_record/migration.rb:379:in `check_pending!'
+  activerecord (4.0.1) lib/active_record/migration.rb:366:in `call'
+  actionpack (4.0.1) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.0.1) lib/active_support/callbacks.rb:373:in `_run__307360349076238471__call__callbacks'
+  activesupport (4.0.1) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.1) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.0.1) lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  actionpack (4.0.1) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.1) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.1) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.1) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.1) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.1) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.1) lib/rails/engine.rb:511:in `call'
+  railties (4.0.1) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/Redrick/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/Redrick/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/Redrick/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/Redrick/.rvm/gems/ruby-2.0.0-p247@rails_codebook/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.0ms)
+  Rendered /Users/Redrick/.rvm/gems/ruby-2.0.0-p247@rails_codebook/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /Users/Redrick/.rvm/gems/ruby-2.0.0-p247@rails_codebook/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/Redrick/.rvm/gems/ruby-2.0.0-p247@rails_codebook/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (17.7ms)
+  [1m[36m (1.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (1.6ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateArticles (20131121101057)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "articles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "text" text, "author" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20131121101057"]]
+  [1m[36m (1.7ms)[0m  [1mcommit transaction[0m
+Migrating to CreateComments (20131121101251)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "author" varchar(255), "content" text, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20131121101251"]]
+  [1m[36m (1.5ms)[0m  [1mcommit transaction[0m
+Migrating to AddColumnsToComment (20131121140202)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "comments" ADD "commentable_id" integer[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "comments" ADD "commentable_type" varchar(255)
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20131121140202"]]
+  [1m[35m (1.5ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/" for 127.0.0.1 at 2013-11-21 15:05:36 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/Redrick/.rvm/gems/ruby-2.0.0-p247@rails_codebook/gems/railties-4.0.1/lib/rails/templates/rails/welcome/index.html.erb (2.2ms)
+Completed 200 OK in 9ms (Views: 8.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/codebooks" for 127.0.0.1 at 2013-11-21 15:05:40 +0100
+
+ActionController::RoutingError (No route matches [GET] "/codebooks"):
+  actionpack (4.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.1) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.1) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.1) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.1) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.1) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.1) lib/rails/engine.rb:511:in `call'
+  railties (4.0.1) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/Redrick/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/Redrick/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/Redrick/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/Redrick/.rvm/gems/ruby-2.0.0-p247@rails_codebook/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /Users/Redrick/.rvm/gems/ruby-2.0.0-p247@rails_codebook/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.1ms)
+  Rendered /Users/Redrick/.rvm/gems/ruby-2.0.0-p247@rails_codebook/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (55.3ms)
+  Rendered /Users/Redrick/.rvm/gems/ruby-2.0.0-p247@rails_codebook/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (157.1ms)
+
+
+Started GET "/codebooks" for 127.0.0.1 at 2013-11-21 15:05:43 +0100
+
+ActionController::RoutingError (No route matches [GET] "/codebooks"):
+  actionpack (4.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.1) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.1) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.1) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.1) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.1) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.1) lib/rails/engine.rb:511:in `call'
+  railties (4.0.1) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/Redrick/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/Redrick/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/Redrick/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/Redrick/.rvm/gems/ruby-2.0.0-p247@rails_codebook/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /Users/Redrick/.rvm/gems/ruby-2.0.0-p247@rails_codebook/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.8ms)
+  Rendered /Users/Redrick/.rvm/gems/ruby-2.0.0-p247@rails_codebook/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.1ms)
+  Rendered /Users/Redrick/.rvm/gems/ruby-2.0.0-p247@rails_codebook/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (18.3ms)
+
+
+Started GET "/codebooks" for 127.0.0.1 at 2013-11-21 15:05:45 +0100
+
+ActionController::RoutingError (No route matches [GET] "/codebooks"):
+  actionpack (4.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.1) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.1) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.1) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.1) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.1) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.1) lib/rails/engine.rb:511:in `call'
+  railties (4.0.1) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/Redrick/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/Redrick/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/Redrick/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/Redrick/.rvm/gems/ruby-2.0.0-p247@rails_codebook/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /Users/Redrick/.rvm/gems/ruby-2.0.0-p247@rails_codebook/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.7ms)
+  Rendered /Users/Redrick/.rvm/gems/ruby-2.0.0-p247@rails_codebook/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.2ms)
+  Rendered /Users/Redrick/.rvm/gems/ruby-2.0.0-p247@rails_codebook/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (21.3ms)
+
+
+Started GET "/codebooks" for 127.0.0.1 at 2013-11-21 15:06:46 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by RailsCodebook::Admin::CodebooksController#index as HTML
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (3.6ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (0.8ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (0.7ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (0.7ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (0.8ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (0.8ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (1.0ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (0.8ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (0.7ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (0.7ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/index.html.erb within layouts/rails_codebook/application (75.8ms)
+Completed 200 OK in 662ms (Views: 642.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.css?body=1" for 127.0.0.1 at 2013-11-21 15:06:47 +0100
+
+
+Started GET "/assets/rails_codebook/application.css?body=1" for 127.0.0.1 at 2013-11-21 15:06:47 +0100
+
+
+Started GET "/assets/rails_codebook/codebooks.css?body=1" for 127.0.0.1 at 2013-11-21 15:06:47 +0100
+
+
+Started GET "/assets/rails_codebook/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2013-11-21 15:06:47 +0100
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.css?body=1" for 127.0.0.1 at 2013-11-21 15:06:47 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-11-21 15:06:47 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-11-21 15:06:47 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2013-11-21 15:06:47 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2013-11-21 15:06:47 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2013-11-21 15:06:47 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2013-11-21 15:06:47 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2013-11-21 15:06:47 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2013-11-21 15:06:47 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2013-11-21 15:06:47 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2013-11-21 15:06:47 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2013-11-21 15:06:47 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2013-11-21 15:06:47 +0100
+
+
+Started GET "/assets/fontawesome-webfont.woff" for 127.0.0.1 at 2013-11-21 15:06:48 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2013-11-21 15:06:48 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2013-11-21 15:06:48 +0100
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2013-11-21 15:06:48 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-affix.js?body=1" for 127.0.0.1 at 2013-11-21 15:06:48 +0100
+
+
+Started GET "/assets/rails_codebook/bootstrap.js?body=1" for 127.0.0.1 at 2013-11-21 15:06:48 +0100
+
+
+Started GET "/assets/rails_codebook/codebooks.js?body=1" for 127.0.0.1 at 2013-11-21 15:06:48 +0100
+
+
+Started GET "/assets/rails_codebook/jquery.autosize.js?body=1" for 127.0.0.1 at 2013-11-21 15:06:48 +0100
+
+
+Started GET "/assets/rails_codebook/application.js?body=1" for 127.0.0.1 at 2013-11-21 15:06:48 +0100
+
+
+Started GET "/codebooks/admin?utf8=%E2%9C%93&query=&button=&cb_name=" for 127.0.0.1 at 2013-11-21 15:06:56 +0100
+Processing by RailsCodebook::Admin::CodebooksController#index as HTML
+  Parameters: {"utf8"=>"✓", "query"=>"", "button"=>"", "cb_name"=>""}
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (2.1ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (1.5ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (1.2ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (0.8ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (0.8ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (1.0ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (1.2ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (1.1ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (1.5ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (1.4ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/index.html.erb within layouts/rails_codebook/application (38.7ms)
+Completed 200 OK in 61ms (Views: 48.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/rails_codebook/application.css?body=1" for 127.0.0.1 at 2013-11-21 15:06:56 +0100
+
+
+Started GET "/assets/rails_codebook/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2013-11-21 15:06:56 +0100
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.css?body=1" for 127.0.0.1 at 2013-11-21 15:06:56 +0100
+
+
+Started GET "/assets/rails_codebook/codebooks.css?body=1" for 127.0.0.1 at 2013-11-21 15:06:56 +0100
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.css?body=1" for 127.0.0.1 at 2013-11-21 15:06:56 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2013-11-21 15:06:56 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2013-11-21 15:06:56 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2013-11-21 15:06:56 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-11-21 15:06:56 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-11-21 15:06:56 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2013-11-21 15:06:56 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2013-11-21 15:06:56 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2013-11-21 15:06:56 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2013-11-21 15:06:56 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2013-11-21 15:06:56 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2013-11-21 15:06:56 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2013-11-21 15:06:56 +0100
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2013-11-21 15:06:56 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2013-11-21 15:06:56 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2013-11-21 15:06:56 +0100
+
+
+Started GET "/assets/rails_codebook/bootstrap.js?body=1" for 127.0.0.1 at 2013-11-21 15:06:56 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-affix.js?body=1" for 127.0.0.1 at 2013-11-21 15:06:56 +0100
+
+
+Started GET "/assets/rails_codebook/jquery.autosize.js?body=1" for 127.0.0.1 at 2013-11-21 15:06:56 +0100
+
+
+Started GET "/assets/rails_codebook/codebooks.js?body=1" for 127.0.0.1 at 2013-11-21 15:06:56 +0100
+
+
+Started GET "/assets/rails_codebook/application.js?body=1" for 127.0.0.1 at 2013-11-21 15:06:56 +0100
+
+
+Started GET "/codebooks/admin?utf8=%E2%9C%93&query=&button=&cb_name=" for 127.0.0.1 at 2013-11-21 15:06:57 +0100
+Processing by RailsCodebook::Admin::CodebooksController#index as HTML
+  Parameters: {"utf8"=>"✓", "query"=>"", "button"=>"", "cb_name"=>""}
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (1.6ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (1.0ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (1.0ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (0.8ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (0.8ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (2.0ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (1.3ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (1.1ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (0.9ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (0.9ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/index.html.erb within layouts/rails_codebook/application (46.1ms)
+Completed 200 OK in 72ms (Views: 54.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.css?body=1" for 127.0.0.1 at 2013-11-21 15:06:57 +0100
+
+
+Started GET "/assets/rails_codebook/application.css?body=1" for 127.0.0.1 at 2013-11-21 15:06:57 +0100
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.css?body=1" for 127.0.0.1 at 2013-11-21 15:06:57 +0100
+
+
+Started GET "/assets/rails_codebook/codebooks.css?body=1" for 127.0.0.1 at 2013-11-21 15:06:57 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-11-21 15:06:57 +0100
+
+
+Started GET "/assets/rails_codebook/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2013-11-21 15:06:57 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-11-21 15:06:57 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2013-11-21 15:06:57 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2013-11-21 15:06:57 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2013-11-21 15:06:57 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2013-11-21 15:06:57 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2013-11-21 15:06:57 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2013-11-21 15:06:57 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2013-11-21 15:06:57 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2013-11-21 15:06:57 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2013-11-21 15:06:57 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2013-11-21 15:06:57 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2013-11-21 15:06:57 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2013-11-21 15:06:57 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-affix.js?body=1" for 127.0.0.1 at 2013-11-21 15:06:57 +0100
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2013-11-21 15:06:57 +0100
+
+
+Started GET "/assets/rails_codebook/bootstrap.js?body=1" for 127.0.0.1 at 2013-11-21 15:06:57 +0100
+
+
+Started GET "/assets/rails_codebook/jquery.autosize.js?body=1" for 127.0.0.1 at 2013-11-21 15:06:57 +0100
+
+
+Started GET "/assets/rails_codebook/application.js?body=1" for 127.0.0.1 at 2013-11-21 15:06:57 +0100
+
+
+Started GET "/assets/rails_codebook/codebooks.js?body=1" for 127.0.0.1 at 2013-11-21 15:06:57 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddTypeCbColumnToComment (20131121141540)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mALTER TABLE "comments" ADD "type_cb" integer[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20131121141540"]]
+  [1m[36m (5.7ms)[0m  [1mcommit transaction[0m
+Migrating to AddImportanceCbColumnToComment (20131121141713)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mALTER TABLE "comments" ADD "importance_cb" integer[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20131121141713"]]
+  [1m[36m (1.7ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (2.3ms)[0m  [1mCREATE TABLE "articles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "text" text, "author" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (1.6ms)[0m  CREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "author" varchar(255), "content" text, "created_at" datetime, "updated_at" datetime, "commentable_id" integer, "commentable_type" varchar(255), "type_cb" integer, "importance_cb" integer) 
+  [1m[36m (1.7ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (1.6ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (2.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20131121141713')
+  [1m[36m (1.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20131121101057')[0m
+  [1m[35m (1.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20131121101251')
+  [1m[36m (1.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20131121141540')[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateCommentRelations (20131121142715)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "comment_relations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "commentable_id" integer, "commentable_type" varchar(255), "status_cb" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20131121142715"]]
+  [1m[36m (2.3ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.6ms)[0m  [1mDROP TABLE "comment_relations"[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20131121142715'
+  [1m[36m (1.8ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateCommentRelations (20131121142715)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mCREATE TABLE "comment_relations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "commentable_id" integer, "commentable_type" varchar(255), "comment_id" integer, "status_cb" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20131121142715"]]
+  [1m[36m (5.7ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/codebooks/admin?utf8=%E2%9C%93&query=&button=&cb_name=" for 127.0.0.1 at 2013-11-21 15:34:01 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by RailsCodebook::Admin::CodebooksController#index as HTML
+  Parameters: {"utf8"=>"✓", "query"=>"", "button"=>"", "cb_name"=>""}
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (4.1ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (1.0ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (0.8ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (0.9ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (0.7ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (0.9ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (0.8ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (0.7ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (0.7ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (0.7ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/index.html.erb within layouts/rails_codebook/application (84.5ms)
+Completed 200 OK in 279ms (Views: 263.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/rails_codebook/application.css?body=1" for 127.0.0.1 at 2013-11-21 15:34:01 +0100
+
+
+Started GET "/assets/rails_codebook/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2013-11-21 15:34:01 +0100
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.css?body=1" for 127.0.0.1 at 2013-11-21 15:34:01 +0100
+
+
+Started GET "/assets/rails_codebook/codebooks.css?body=1" for 127.0.0.1 at 2013-11-21 15:34:01 +0100
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.css?body=1" for 127.0.0.1 at 2013-11-21 15:34:01 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:01 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:02 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:02 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:02 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:02 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:02 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:02 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:02 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:02 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:02 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:02 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:02 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:02 +0100
+
+
+Started GET "/assets/fontawesome-webfont.woff" for 127.0.0.1 at 2013-11-21 15:34:02 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-affix.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:02 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:02 +0100
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:02 +0100
+
+
+Started GET "/assets/rails_codebook/bootstrap.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:02 +0100
+
+
+Started GET "/assets/rails_codebook/codebooks.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:02 +0100
+
+
+Started GET "/assets/rails_codebook/jquery.autosize.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:02 +0100
+
+
+Started GET "/assets/rails_codebook/application.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:02 +0100
+
+
+Started GET "/codebooks/admin" for 127.0.0.1 at 2013-11-21 15:34:03 +0100
+Processing by RailsCodebook::Admin::CodebooksController#index as HTML
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (1.1ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (1.0ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (0.9ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (0.8ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (1.1ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (1.0ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (1.3ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (1.4ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (1.0ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (0.9ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/index.html.erb within layouts/rails_codebook/application (37.3ms)
+Completed 200 OK in 58ms (Views: 45.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.css?body=1" for 127.0.0.1 at 2013-11-21 15:34:03 +0100
+
+
+Started GET "/assets/rails_codebook/application.css?body=1" for 127.0.0.1 at 2013-11-21 15:34:03 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:03 +0100
+
+
+Started GET "/assets/rails_codebook/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2013-11-21 15:34:03 +0100
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.css?body=1" for 127.0.0.1 at 2013-11-21 15:34:03 +0100
+
+
+Started GET "/assets/rails_codebook/codebooks.css?body=1" for 127.0.0.1 at 2013-11-21 15:34:03 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:03 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:03 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:03 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:03 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:03 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:03 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:03 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:03 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:03 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:03 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:03 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:03 +0100
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:03 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:03 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-affix.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:03 +0100
+
+
+Started GET "/assets/rails_codebook/bootstrap.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:03 +0100
+
+
+Started GET "/assets/rails_codebook/codebooks.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:03 +0100
+
+
+Started GET "/assets/rails_codebook/jquery.autosize.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:03 +0100
+
+
+Started GET "/assets/rails_codebook/application.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:03 +0100
+
+
+Started GET "/codebooks/admin" for 127.0.0.1 at 2013-11-21 15:34:04 +0100
+Processing by RailsCodebook::Admin::CodebooksController#index as HTML
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (1.3ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (0.9ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (1.1ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (0.9ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (0.8ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (0.7ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (1.0ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (1.0ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (0.9ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (1.6ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/index.html.erb within layouts/rails_codebook/application (37.3ms)
+Completed 200 OK in 108ms (Views: 47.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/rails_codebook/application.css?body=1" for 127.0.0.1 at 2013-11-21 15:34:04 +0100
+
+
+Started GET "/assets/rails_codebook/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2013-11-21 15:34:04 +0100
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.css?body=1" for 127.0.0.1 at 2013-11-21 15:34:04 +0100
+
+
+Started GET "/assets/rails_codebook/codebooks.css?body=1" for 127.0.0.1 at 2013-11-21 15:34:04 +0100
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.css?body=1" for 127.0.0.1 at 2013-11-21 15:34:04 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:04 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:04 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:04 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:04 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:04 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:04 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:04 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:04 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:04 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:04 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:04 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:04 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:05 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:05 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-affix.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:05 +0100
+
+
+Started GET "/assets/rails_codebook/bootstrap.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:05 +0100
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:05 +0100
+
+
+Started GET "/assets/rails_codebook/codebooks.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:05 +0100
+
+
+Started GET "/assets/rails_codebook/jquery.autosize.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:05 +0100
+
+
+Started GET "/assets/rails_codebook/application.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:05 +0100
+
+
+Started GET "/codebooks/admin?utf8=%E2%9C%93&query=&cb_name=the_same" for 127.0.0.1 at 2013-11-21 15:34:06 +0100
+Processing by RailsCodebook::Admin::CodebooksController#index as HTML
+  Parameters: {"utf8"=>"✓", "query"=>"", "cb_name"=>"the_same"}
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (0.8ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (0.9ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (0.8ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (0.7ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (0.7ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (0.8ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (1.0ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (0.8ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (1.0ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (1.1ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/index.html.erb within layouts/rails_codebook/application (36.7ms)
+Completed 200 OK in 62ms (Views: 44.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/rails_codebook/application.css?body=1" for 127.0.0.1 at 2013-11-21 15:34:06 +0100
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.css?body=1" for 127.0.0.1 at 2013-11-21 15:34:06 +0100
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.css?body=1" for 127.0.0.1 at 2013-11-21 15:34:06 +0100
+
+
+Started GET "/assets/rails_codebook/codebooks.css?body=1" for 127.0.0.1 at 2013-11-21 15:34:06 +0100
+
+
+Started GET "/assets/rails_codebook/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2013-11-21 15:34:06 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:06 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:06 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:06 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:06 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:06 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:06 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:06 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:06 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:06 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:06 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:06 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:06 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:06 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:06 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-affix.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:06 +0100
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:06 +0100
+
+
+Started GET "/assets/rails_codebook/bootstrap.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:06 +0100
+
+
+Started GET "/assets/rails_codebook/codebooks.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:06 +0100
+
+
+Started GET "/assets/rails_codebook/jquery.autosize.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:06 +0100
+
+
+Started GET "/assets/rails_codebook/application.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:06 +0100
+
+
+Started GET "/codebooks/?cb_name=the_same&page=2&query=&utf8=%E2%9C%93" for 127.0.0.1 at 2013-11-21 15:34:10 +0100
+Processing by RailsCodebook::Admin::CodebooksController#index as HTML
+  Parameters: {"cb_name"=>"the_same", "page"=>"2", "query"=>"", "utf8"=>"✓"}
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (1.1ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (0.7ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (1.4ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (1.3ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (1.1ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (1.1ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (0.9ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/index.html.erb within layouts/rails_codebook/application (36.9ms)
+Completed 200 OK in 63ms (Views: 46.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.css?body=1" for 127.0.0.1 at 2013-11-21 15:34:10 +0100
+
+
+Started GET "/assets/rails_codebook/application.css?body=1" for 127.0.0.1 at 2013-11-21 15:34:10 +0100
+
+
+Started GET "/assets/rails_codebook/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2013-11-21 15:34:10 +0100
+
+
+Started GET "/assets/rails_codebook/codebooks.css?body=1" for 127.0.0.1 at 2013-11-21 15:34:10 +0100
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.css?body=1" for 127.0.0.1 at 2013-11-21 15:34:10 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:10 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:10 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:10 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:10 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:10 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:10 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:10 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:10 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:10 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:10 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:10 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:10 +0100
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:10 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-affix.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:10 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:10 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:10 +0100
+
+
+Started GET "/assets/rails_codebook/codebooks.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:10 +0100
+
+
+Started GET "/assets/rails_codebook/jquery.autosize.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:10 +0100
+
+
+Started GET "/assets/rails_codebook/bootstrap.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:10 +0100
+
+
+Started GET "/assets/rails_codebook/application.js?body=1" for 127.0.0.1 at 2013-11-21 15:34:10 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (3.0ms)[0m  INSERT INTO "articles" ("created_at", "updated_at") VALUES (?, ?)  [["created_at", Thu, 21 Nov 2013 14:37:50 UTC +00:00], ["updated_at", Thu, 21 Nov 2013 14:37:50 UTC +00:00]]
+  [1m[36m (5.6ms)[0m  [1mcommit transaction[0m
+
+
+Started GET "/codebooks/admin?cb_name=contract_status" for 127.0.0.1 at 2013-11-21 16:03:37 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by RailsCodebook::Admin::CodebooksController#index as HTML
+  Parameters: {"cb_name"=>"contract_status"}
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/index.html.erb within layouts/rails_codebook/application (76.0ms)
+Completed 200 OK in 308ms (Views: 254.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.css?body=1" for 127.0.0.1 at 2013-11-21 16:03:37 +0100
+
+
+Started GET "/assets/rails_codebook/application.css?body=1" for 127.0.0.1 at 2013-11-21 16:03:37 +0100
+
+
+Started GET "/assets/rails_codebook/codebooks.css?body=1" for 127.0.0.1 at 2013-11-21 16:03:37 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-11-21 16:03:37 +0100
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.css?body=1" for 127.0.0.1 at 2013-11-21 16:03:38 +0100
+
+
+Started GET "/assets/rails_codebook/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2013-11-21 16:03:38 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-11-21 16:03:38 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2013-11-21 16:03:38 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2013-11-21 16:03:38 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2013-11-21 16:03:38 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2013-11-21 16:03:38 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2013-11-21 16:03:38 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2013-11-21 16:03:38 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2013-11-21 16:03:38 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2013-11-21 16:03:38 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2013-11-21 16:03:38 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2013-11-21 16:03:38 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2013-11-21 16:03:38 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2013-11-21 16:03:38 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-affix.js?body=1" for 127.0.0.1 at 2013-11-21 16:03:38 +0100
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2013-11-21 16:03:38 +0100
+
+
+Started GET "/assets/rails_codebook/bootstrap.js?body=1" for 127.0.0.1 at 2013-11-21 16:03:38 +0100
+
+
+Started GET "/assets/rails_codebook/codebooks.js?body=1" for 127.0.0.1 at 2013-11-21 16:03:38 +0100
+
+
+Started GET "/assets/rails_codebook/jquery.autosize.js?body=1" for 127.0.0.1 at 2013-11-21 16:03:38 +0100
+
+
+Started GET "/assets/rails_codebook/application.js?body=1" for 127.0.0.1 at 2013-11-21 16:03:38 +0100
+
+
+Started GET "/codebooks/admin?cb_name=contract_status" for 127.0.0.1 at 2013-11-21 16:03:39 +0100
+Processing by RailsCodebook::Admin::CodebooksController#index as HTML
+  Parameters: {"cb_name"=>"contract_status"}
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/index.html.erb within layouts/rails_codebook/application (50.1ms)
+Completed 200 OK in 105ms (Views: 59.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/rails_codebook/application.css?body=1" for 127.0.0.1 at 2013-11-21 16:03:39 +0100
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.css?body=1" for 127.0.0.1 at 2013-11-21 16:03:39 +0100
+
+
+Started GET "/assets/rails_codebook/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2013-11-21 16:03:39 +0100
+
+
+Started GET "/assets/rails_codebook/codebooks.css?body=1" for 127.0.0.1 at 2013-11-21 16:03:39 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-11-21 16:03:39 +0100
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.css?body=1" for 127.0.0.1 at 2013-11-21 16:03:39 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-11-21 16:03:39 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2013-11-21 16:03:39 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2013-11-21 16:03:39 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2013-11-21 16:03:39 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2013-11-21 16:03:39 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2013-11-21 16:03:39 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2013-11-21 16:03:39 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2013-11-21 16:03:39 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2013-11-21 16:03:39 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2013-11-21 16:03:39 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2013-11-21 16:03:39 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2013-11-21 16:03:39 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2013-11-21 16:03:39 +0100
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-affix.js?body=1" for 127.0.0.1 at 2013-11-21 16:03:39 +0100
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2013-11-21 16:03:39 +0100
+
+
+Started GET "/assets/rails_codebook/jquery.autosize.js?body=1" for 127.0.0.1 at 2013-11-21 16:03:39 +0100
+
+
+Started GET "/assets/rails_codebook/bootstrap.js?body=1" for 127.0.0.1 at 2013-11-21 16:03:39 +0100
+
+
+Started GET "/assets/rails_codebook/codebooks.js?body=1" for 127.0.0.1 at 2013-11-21 16:03:39 +0100
+
+
+Started GET "/assets/rails_codebook/application.js?body=1" for 127.0.0.1 at 2013-11-21 16:03:39 +0100
+
+
+Started GET "/codebooks/admin" for 127.0.0.1 at 2013-11-21 16:03:40 +0100
+Processing by RailsCodebook::Admin::CodebooksController#index as HTML
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (1.7ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (1.1ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (1.0ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (0.8ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (0.9ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (1.0ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (1.3ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (1.3ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (1.1ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (0.8ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/index.html.erb within layouts/rails_codebook/application (117.3ms)
+Completed 200 OK in 184ms (Views: 125.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/fontawesome-webfont.woff" for 127.0.0.1 at 2013-11-21 16:03:40 +0100
+
+
+Started GET "/codebooks/admin?utf8=%E2%9C%93&query=&cb_name=importances" for 127.0.0.1 at 2013-11-21 16:03:43 +0100
+Processing by RailsCodebook::Admin::CodebooksController#index as HTML
+  Parameters: {"utf8"=>"✓", "query"=>"", "cb_name"=>"importances"}
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (0.8ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (0.7ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (0.8ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (0.8ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (0.9ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (0.7ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (0.7ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (0.7ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (0.8ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (1.0ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/index.html.erb within layouts/rails_codebook/application (61.0ms)
+Completed 200 OK in 121ms (Views: 69.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/codebooks/admin" for 127.0.0.1 at 2013-11-21 16:03:46 +0100
+Processing by RailsCodebook::Admin::CodebooksController#index as HTML
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (1.4ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (1.4ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (1.0ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (0.9ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (0.7ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (0.8ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (0.7ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (0.7ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (0.7ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/_codebook.html.erb (0.9ms)
+  Rendered /Users/Redrick/Projects/rails_codebook/app/views/rails_codebook/admin/codebooks/index.html.erb within layouts/rails_codebook/application (123.3ms)
+Completed 200 OK in 192ms (Views: 132.6ms | ActiveRecord: 0.0ms)

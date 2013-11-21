@@ -31,6 +31,7 @@ FactoryGirl.find_definitions
 db_path = File.expand_path("../dummy/db/test.sqlite3/", __FILE__)
 `rm #{db_path}` if File.exists?(db_path)
 ActiveRecord::Migrator.migrate File.expand_path("../dummy/db/migrate/", __FILE__)
+load File.expand_path("../dummy/db/seeds.rb", __FILE__)
 
 class ActionController::TestCase
   include FactoryGirl::Syntax::Methods

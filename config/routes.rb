@@ -22,4 +22,7 @@ RailsCodebook::Engine.routes.draw do
     #                             DELETE  /admin/codebooks/:id(.:format)        rails_codebook/admin/codebooks#destroy
   end
 
+  # mount with
+  # mount RailsCodebook::Engine => '/codebooks'
+
 end

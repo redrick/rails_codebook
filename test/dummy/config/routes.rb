@@ -57,4 +57,6 @@ Dummy::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+  mount RailsCodebook::Engine => '/codebooks'
 end
