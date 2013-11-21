@@ -1,31 +1,5 @@
 # WORK in PROGRESS
 
-# RailsCodebook
-
-TODO: Write a gem description
-
-## Installation
-
-Add this line to your application's Gemfile:
-
-    gem 'rails_codebook'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install rails_codebook
-
-## Usage
-
-TODO: Write usage instructions here
-
-## Contributing
-
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+[![Build Status](https://travis-ci.org/redrick/rails_codebook.png?branch=master)](https://travis-ci.org/redrick/rails_codebook)
+[![Coverage Status](https://coveralls.io/repos/redrick/rails_codebook/badge.png)](https://coveralls.io/r/redrick/rails_codebook)
+[![Gem Version](https://badge.fury.io/rb/rails_codebook.png)](http://badge.fury.io/rb/rails_codebook)
