@@ -21,8 +21,13 @@ SimpleCov.start do
   add_filter "/script/"
 end
 
-FactoryGirl.definition_file_paths = %w(test/support/)
+FactoryGirl.definition_file_paths = %w(test/factories/ test/dummy/test/factories)
 FactoryGirl.find_definitions
+
+# Run migrations
+db_path = File.expand_path("../dummy/db/test.sqlite3/", __FILE__)
+`rm #{db_path}` if File.exists?(db_path)
+ActiveRecord::Migrator.migrate File.expand_path("../dummy/db/migrate/", __FILE__)
 
 class ActionController::TestCase
   include RailsCodebook::Engine.routes.url_helpers
@@ -32,4 +37,5 @@ end
 class ActionDispatch::IntegrationTest
   include Capybara::DSL
   include FactoryGirl::Syntax::Methods
+
 end
