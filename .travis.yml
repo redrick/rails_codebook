@@ -10,4 +10,6 @@ services:
   - redis-server
 
 addons:
-  firefox: "17.0"
+  sauce_connect:
+    username: "Redrick"
+    access_key: "3147f979-90b5-4ecd-9daf-00b44dc174d9"
