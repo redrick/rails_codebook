@@ -19,7 +19,7 @@ class ArticlesControllerTest < ActionController::TestCase
 
   def test_create
     assert_difference('Article.count') do
-      post :create, article: { title: "Hello", text: "World" }
+      post :create, article: { title: "Hello", text: "World", importance_cb: "low" }
     end
 
     assert_redirected_to article_path(assigns(:article))
@@ -36,7 +36,7 @@ class ArticlesControllerTest < ActionController::TestCase
   end
 
   def test_update
-    put :update, id: @article, article: { title: "Hi", text: "There" }
+    put :update, id: @article, article: { title: "Hi", text: "There", importance_cb: "high" }
     assert_redirected_to article_path(assigns(:article))
   end
 

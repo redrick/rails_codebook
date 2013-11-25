@@ -6,7 +6,8 @@ module RailsCodebook
   
     class CodebooksHelperTest < ActiveSupport::TestCase
 
-      test "search" do
+      # TODO test !
+      test "helper" do
       end
 
     end

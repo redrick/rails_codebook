@@ -1,7 +1,7 @@
-class CommentRelations < ActiveRecord::Base
+class CommentRelation < ActiveRecord::Base
 
   belongs_to :commentable, polymorphic: true
-  has_one :comment
+  belongs_to :comment, dependent: :destroy
 
   has_codebooks({
     'type_cb' => 'polymorphic',

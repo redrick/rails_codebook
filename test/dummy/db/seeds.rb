@@ -127,61 +127,61 @@ Comment.create(
     type_cb: "archived"
   )
 
-CommentRelations.create(
+CommentRelation.create(
     commentable_type: "Article",
     commentable_id: "1",
     comment_id: "1",
     status_cb: "home"
   )
-CommentRelations.create(
+CommentRelation.create(
     commentable_type: "Article",
     commentable_id: "5",
     comment_id: "2",
     status_cb: "home"
   )
-CommentRelations.create(
+CommentRelation.create(
     commentable_type: "Article",
     commentable_id: "5",
     comment_id: "3",
     status_cb: "work"
   )
-CommentRelations.create(
+CommentRelation.create(
     commentable_type: "Article",
     commentable_id: "5",
     comment_id: "4",
     status_cb: "home"
   )
-CommentRelations.create(
+CommentRelation.create(
     commentable_type: "Article",
     commentable_id: "4",
     comment_id: "5",
     status_cb: "work"
   )
-CommentRelations.create(
+CommentRelation.create(
     commentable_type: "Article",
     commentable_id: "4",
     comment_id: "6",
     status_cb: "public"
   )
-CommentRelations.create(
+CommentRelation.create(
     commentable_type: "Article",
     commentable_id: "2",
     comment_id: "7",
     status_cb: "home"
   )
-CommentRelations.create(
+CommentRelation.create(
     commentable_type: "Article",
     commentable_id: "2",
     comment_id: "8",
     status_cb: "public"
   )
-CommentRelations.create(
+CommentRelation.create(
     commentable_type: "Article",
     commentable_id: "3",
     comment_id: "9",
     status_cb: "work"
   )
-CommentRelations.create(
+CommentRelation.create(
     commentable_type: "Article",
     commentable_id: "3",
     comment_id: "10",

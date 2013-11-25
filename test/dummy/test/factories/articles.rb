@@ -6,5 +6,6 @@ FactoryGirl.define do
     title "MyString"
     text "MyText"
     author "MyString"
+    importance_cb "low"
   end
 end

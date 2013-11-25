@@ -8,7 +8,7 @@ require 'simplecov'
 require 'coveralls'
 require 'factory_girl'
 
-Coveralls.wear!
+Coveralls.wear!('rails')
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
   SimpleCov::Formatter::HTMLFormatter,
@@ -16,10 +16,6 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
 ]
 
 SimpleCov.start do
-  # filters.clear # This will remove the :root_filter that comes via simplecov's defaults
-  # add_filter do |src|
-  #   !(src.filename =~ /^#{SimpleCov.root}/) unless src.filename =~ /rails_codebook/
-  # end
   add_filter '/test/'
   add_filter '/config/'
 end
