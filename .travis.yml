@@ -11,5 +11,5 @@ services:
 
 addons:
   sauce_connect:
-    username: "Redrick"
+    username: "redrick"
     access_key: "3147f979-90b5-4ecd-9daf-00b44dc174d9"
