@@ -5,6 +5,6 @@ gemspec
 
 gem "redis_orm", github: 'redrick/redis_orm'
 
-group :development do
+group :development, :test do
   gem 'pry'
 end

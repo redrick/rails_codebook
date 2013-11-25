@@ -8,13 +8,14 @@ module RailsCodebook
       self.abstract_class = true
 
       # universal regexp_search
-      def self.search page=1, column_name='', value='', strict=false, init_cb=RailsCodebook::Codebook.all
+      def self.search column_name='', value='', strict=false, init_cb=RailsCodebook::Codebook.all
+        # binding.pry
         if column_name != ''
           strict ? \
-            init_cb.select{|j| ((column_name == 'name') ? I18n.t(j.send(column_name)) : j.send(column_name)) =~ /^#{value}$/i}.paginate(page: page) : \
-            init_cb.select{|j| ((column_name == 'name') ? I18n.t(j.send(column_name)) : j.send(column_name)) =~ /#{value}/i}.paginate(page: page)
-        else 
-          init_cb.paginate(page: page)
+            init_cb.select{|j| ((column_name == 'name') ? I18n.t(j.send(column_name)) : j.send(column_name)) =~ /^#{value}$/i} : \
+            init_cb.select{|j| ((column_name == 'name') ? I18n.t(j.send(column_name)) : j.send(column_name)) =~ /(#{value})/i}
+        else
+          init_cb
         end
       end
 

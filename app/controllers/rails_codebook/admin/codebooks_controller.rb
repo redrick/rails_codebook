@@ -5,17 +5,19 @@ module RailsCodebook
       layout 'rails_codebook/application'
 
       def index
-        unless params[:cb_name].blank?          
-          @codebooks = RailsCodebook::Codebook.search(params[:page], 'cb_name', params[:cb_name], true)
+        if !params[:cb_name].blank?          
+          @codebooks = RailsCodebook::Codebook.search('cb_name', params[:cb_name], true)
         else
-          @codebooks = RailsCodebook::Codebook.search(params[:page])
+          @codebooks = RailsCodebook::Codebook.all
         end
 
         unless params[:query].blank?
-          @codebooks = (params[:query] == '*') ? \
-            @codebooks = RailsCodebook::Codebook.search(params[:page], 'name', params[:query], true, @codebooks) : \
-            @codebooks = RailsCodebook::Codebook.search(params[:page], 'name', params[:query], false, @codebooks)
+          (params[:query] == '*') ? \
+            @codebooks = RailsCodebook::Codebook.search('name', params[:query], true, @codebooks) : \
+            @codebooks = RailsCodebook::Codebook.search('name', params[:query], false, @codebooks)
         end
+
+        @codebooks = @codebooks.paginate(page: params[:page])
 
         respond_to do |format|
           format.html { 

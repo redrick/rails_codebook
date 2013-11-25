@@ -16,7 +16,7 @@ module RailsCodebook
       # index showing only one codebook
       # /codebooks/cb_name
       def codebook_index
-        @codebooks = RailsCodebook::Codebook.search(params[:page], 'cb_name', params[:cb_name], true)
+        @codebooks = RailsCodebook::Codebook.search('cb_name', params[:cb_name], true).paginate(page: params[:page])
         if params[:q]
           search
         else
@@ -35,7 +35,7 @@ module RailsCodebook
       # /codebooks?q=something
       # /codebooks/cb_name?q=something
       def search
-        @codebooks = RailsCodebook::Codebook.search(params[:page], 'name', params[:q], false, @codebooks)
+        @codebooks = RailsCodebook::Codebook.search('name', params[:q], false, @codebooks).paginate(page: params[:page])
         render json: @codebooks.cb_serialize(params[:format])
       end
     end

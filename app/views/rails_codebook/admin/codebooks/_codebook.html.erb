@@ -1,5 +1,5 @@
 <% codebook ||= @codebook %>
-<tr id="codebook_<%= id %>" class="<%= (codebook.deleted == 1) ? "red" : ''%>">
+<tr id="codebook_<%= id %>" class="codebook_line <%= (codebook.deleted == 1) ? "red" : ''%>">
   <td>
     <div class="btn-group">
       <a class="btn btn-primary" href="#"><i class="icon-book icon-white"> </i><%= codebook.id %></a>

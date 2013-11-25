@@ -1,9 +1,9 @@
-unless RailsCodebook::Codebook.search(1, 'cb_name', 'boolean', true).length > 0
+unless RailsCodebook::Codebook.search('cb_name', 'boolean', true).length > 0
   RailsCodebook::Codebook.create(value: 'yes', name: 'codebook.boolean.yes', cb_name: 'boolean')
   RailsCodebook::Codebook.create(value: 'no', name: 'codebook.boolean.no', cb_name: 'boolean')
 end
 
-unless RailsCodebook::Codebook.search(1, 'cb_name', 'country', true).length > 0
+unless RailsCodebook::Codebook.search('cb_name', 'country', true).length > 0
   RailsCodebook::Codebook.create(value: 'afg', name: 'codebook.country.afg', cb_name: 'country')
   RailsCodebook::Codebook.create(value: 'ala', name: 'codebook.country.ala', cb_name: 'country')
   RailsCodebook::Codebook.create(value: 'alb', name: 'codebook.country.alb', cb_name: 'country')
@@ -252,7 +252,7 @@ unless RailsCodebook::Codebook.search(1, 'cb_name', 'country', true).length > 0
   RailsCodebook::Codebook.create(value: 'svk', name: 'codebook.country.svk', cb_name: 'country')
 end
 
-unless RailsCodebook::Codebook.search(1, 'cb_name', 'currency', true).length > 0
+unless RailsCodebook::Codebook.search('cb_name', 'currency', true).length > 0
   RailsCodebook::Codebook.create(value: 'aud', name: 'codebook.currency.aud', cb_name: 'currency')
   RailsCodebook::Codebook.create(value: 'cad', name: 'codebook.currency.cad', cb_name: 'currency')
   RailsCodebook::Codebook.create(value: 'chf', name: 'codebook.currency.chf', cb_name: 'currency')
@@ -264,7 +264,7 @@ unless RailsCodebook::Codebook.search(1, 'cb_name', 'currency', true).length > 0
   RailsCodebook::Codebook.create(value: 'usd', name: 'codebook.currency.usd', cb_name: 'currency')
 end
 
-unless RailsCodebook::Codebook.search(1, 'cb_name', 'importance', true).length > 0
+unless RailsCodebook::Codebook.search('cb_name', 'importance', true).length > 0
   RailsCodebook::Codebook.create(value: 'low', name: 'codebook.importance.low', cb_name: 'importance')
   RailsCodebook::Codebook.create(value: 'medium', name: 'codebook.importance.medium', cb_name: 'importance')
   RailsCodebook::Codebook.create(value: 'high', name: 'codebook.importance.high', cb_name: 'importance')

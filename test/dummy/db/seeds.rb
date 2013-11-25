@@ -1,14 +1,14 @@
-unless RailsCodebook::Codebook.search(1, 'cb_name', 'importances', true).length > 0
+unless RailsCodebook::Codebook.search('cb_name', 'importances', true).length > 0
   RailsCodebook::Codebook.create(value: "low",name: "cb.low",cb_name: "importances")
   RailsCodebook::Codebook.create(value: "medium",name: "cb.medium",cb_name: "importances")
   RailsCodebook::Codebook.create(value: "high",name: "cb.high",cb_name: "importances")
 end
-unless RailsCodebook::Codebook.search(1, 'cb_name', 'types', true).length > 0
+unless RailsCodebook::Codebook.search('cb_name', 'types', true).length > 0
   RailsCodebook::Codebook.create(value: "concept",name: "cb.concept",cb_name: "types")
   RailsCodebook::Codebook.create(value: "published",name: "cb.published",cb_name: "types")
   RailsCodebook::Codebook.create(value: "archived",name: "cb.archived",cb_name: "types")
 end
-unless RailsCodebook::Codebook.search(1, 'cb_name', 'article_commet_relations_types', true).length > 0
+unless RailsCodebook::Codebook.search('cb_name', 'article_commet_relations_types', true).length > 0
   RailsCodebook::Codebook.create(value: "home",name: "cb.home",cb_name: "article_commet_relations_types")
   RailsCodebook::Codebook.create(value: "work",name: "cb.work",cb_name: "article_commet_relations_types")
   RailsCodebook::Codebook.create(value: "public",name: "cb.public",cb_name: "article_commet_relations_types")

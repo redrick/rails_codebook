@@ -34,8 +34,11 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "coveralls"
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "minitest-rails"
+  spec.add_development_dependency "capybara" #, '2.0.2'
   spec.add_development_dependency "minitest-rails-capybara"
   spec.add_development_dependency "factory_girl_rails"
+  spec.add_development_dependency "selenium-webdriver"
+  spec.add_development_dependency "turn"
 
   spec.add_dependency "rake"
 end

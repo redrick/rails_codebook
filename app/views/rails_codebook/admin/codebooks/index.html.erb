@@ -44,16 +44,16 @@
     <div class="navbar-inner">
       <%= form_tag admin_codebooks_path, class: 'navbar-form pull-left', method: :get, id: 'search-form' do %>
         <%= text_field_tag :query, params[:query], hint: 'Search', placeholder: 'Search', autofocus: true %>
-        <%= button_tag 'search', class: 'btn' %>
+        <%= button_tag 'Search', class: 'btn' %>
         <%= select_tag :cb_name, options_from_collection_for_select(all_codebooks, "cb_name", "cb_name", params[:cb_name]), include_blank: true %>
       <% end %>
 
       <div class="clear_button">
-        <%= link_to 'clear', admin_codebooks_path, class: 'btn' %>
+        <%= link_to 'Clear', admin_codebooks_path, class: 'btn' %>
       </div>
 
       <div class="new_button">
-        <%= link_to 'new', '#', data: { toggle: "modal", target: '#add-codebook'}, id: 'add-codebook-link', class: 'btn' %>
+        <%= link_to 'New', '#', data: { toggle: "modal", target: '#add-codebook'}, id: 'add-codebook-link', class: 'btn' %>
       </div>
 
     </div>

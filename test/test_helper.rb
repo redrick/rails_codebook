@@ -7,6 +7,7 @@ require "minitest/rails/capybara"
 require 'simplecov'
 require 'coveralls'
 require 'factory_girl'
+require 'turn/autorun'
 
 Coveralls.wear!('rails')
 
@@ -25,7 +26,10 @@ FactoryGirl.find_definitions
 
 # Run migrations
 db_path = File.expand_path("../dummy/db/test.sqlite3/", __FILE__)
+# erase sqlite file
 `rm #{db_path}` if File.exists?(db_path)
+# flush redis DB
+RailsCodebook.redis.flushdb
 ActiveRecord::Migrator.migrate File.expand_path("../dummy/db/migrate/", __FILE__)
 load File.expand_path("../dummy/db/seeds.rb", __FILE__)
 
@@ -33,8 +37,9 @@ class ActionController::TestCase
   include FactoryGirl::Syntax::Methods
 end
 
-class ActionDispatch::IntegrationTest
-  include Capybara::DSL
+class Capybara::Rails::TestCase
   include FactoryGirl::Syntax::Methods
   include RailsCodebook::Engine.routes.url_helpers
 end
+
+Turn.config.format = :outline
