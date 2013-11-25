@@ -4,3 +4,7 @@ source 'https://rubygems.org'
 gemspec
 
 gem "redis_orm", github: 'redrick/redis_orm'
+
+group :development do
+  gem 'pry'
+end

@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20131121142715) do
     t.string   "title"
     t.text     "text"
     t.string   "author"
+    t.string   "importance_cb"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -25,7 +26,7 @@ ActiveRecord::Schema.define(version: 20131121142715) do
     t.integer  "commentable_id"
     t.string   "commentable_type"
     t.integer  "comment_id"
-    t.integer  "status_cb"
+    t.string   "status_cb"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -33,12 +34,9 @@ ActiveRecord::Schema.define(version: 20131121142715) do
   create_table "comments", force: true do |t|
     t.string   "author"
     t.text     "content"
+    t.string   "type_cb"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "commentable_id"
-    t.string   "commentable_type"
-    t.integer  "type_cb"
-    t.integer  "importance_cb"
   end
 
 end

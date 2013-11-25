@@ -30,6 +30,11 @@ module RailsCodebook
     index :sequence
     index :deleted
 
+    def t_name
+      I18n.t self.name
+    end
+    
+
     private
 
       def set_created_at

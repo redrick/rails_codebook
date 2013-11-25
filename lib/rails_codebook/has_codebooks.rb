@@ -90,7 +90,7 @@ class << ActiveRecord::Base
 
       # method for getting all possible values of codebook or the column given (something_object_all) => OBJECT
       define_singleton_method (base_method_name+"_collection").to_sym do
-        RailsCodebook::Codebook.search(params[:page], "cb_name", codebook_name, true).cb_serialize("collection_#{fk_cb}".to_sym)
+        RailsCodebook::Codebook.search(params[:page], "cb_name", codebook_name, true)
       end    
 
       # method for getting all possible values of codebook or the column given (something_all) => JSON

@@ -4,7 +4,7 @@ class CreateCommentRelations < ActiveRecord::Migration
       t.integer :commentable_id
       t.string :commentable_type
       t.integer :comment_id
-      t.integer :status_cb
+      t.string :status_cb
 
       t.timestamps
     end

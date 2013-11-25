@@ -23,6 +23,10 @@
     <%= f.label :author %><br>
     <%= f.text_field :author %>
   </div>
+  <div class="field">
+    <%= f.label :importance_cb %><br>
+    <%= f.select :importance_cb, options_from_collection_for_select(Article.importance_collection, :value, :t_name, @article.importance_cb) %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
