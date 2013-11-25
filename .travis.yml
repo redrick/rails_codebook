@@ -8,3 +8,6 @@ gemfile:
 
 services:
   - redis-server
+
+addons:
+  firefox: "17.0"
