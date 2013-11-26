@@ -6,10 +6,12 @@ module RailsCodebook
 
     class BaseTest < ActiveSupport::TestCase
 
-      test "test search" do
+      test "search" do
+        count1 = RailsCodebook::Model::Base.search.count
+        count2 = RailsCodebook::Codebook.all.count
 
+        assert (count1 == count2)
       end
-
     end
 
   end

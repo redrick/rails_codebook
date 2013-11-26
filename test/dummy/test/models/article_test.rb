@@ -1,7 +1,10 @@
 require "test_helper"
 
 class ArticleTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+
+  # testing only acts_as_codebook here :)
+  test "the truth" do
+    assert true
+  end
+
 end
