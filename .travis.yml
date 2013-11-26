@@ -1,6 +1,6 @@
 script: "bundle exec rake"
 
-test_script: "bundle exec rake test"
+test_script: "bundle exec rake travis"
 
 language: ruby
 
