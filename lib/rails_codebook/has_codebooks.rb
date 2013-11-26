@@ -74,7 +74,7 @@ class << ActiveRecord::Base
       end
 
       # method for getting the one row referenced from model as json (something)
-      define_method (base_method_name+"_codebook_name").to_sym do
+      define_singleton_method (base_method_name+"_codebook_name").to_sym do
         codebook_name
       end  
 
