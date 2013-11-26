@@ -90,23 +90,25 @@ as you added the ```mount RailsCodebook::Engine => '/codebooks'``` into your rou
 
 you can use routes: 
   
+  ```ruby
   # list of all codebook values 
   # you can change the language (because I forgot to mention that
   # I count with you using 'name' column as place for translation key)
   # use only two letters {en, cs, sk, pl}
-  ```GET "/api/(:lang)"```
+  GET "/api/(:lang)"
 
   # you can look through all values by passing GET query under 'q' key
-  ```GET "/api/(:lang)?q=somequery"```
+  GET "/api/(:lang)?q=somequery"
 
   # for getting one codebook, cb_name is its name, please do not use others that '_' in names
-  ```GET "/(:lang)/:cb_name"```
+  GET "/(:lang)/:cb_name"
   
   # you can look through the codebook values by passing GET query under 'q' key
-  ```GET "/(:lang)/:cb_name?q=somequery"```
+  GET "/(:lang)/:cb_name?q=somequery"
 
   # show method of one of the codebooks thorugh its cb_name and id
-  ```GET "/(:lang)/:cb_name/:id"```
+  GET "/(:lang)/:cb_name/:id"
+  ```
 
 ### Usage
 
@@ -144,7 +146,7 @@ has_codebooks({
   "role_cb" => "polymorphic"             # says look to options, you are not going to find cb_name here :)
   "options" => {
     "role_cb" => {                       # in case there are more codebooks that need these options
-      "cb_format" => "projectable_type"  # or will always be joined from :
+      "cb_format" => "projectable_type"  # will always be joined from (cb_format is column where the first part is) :
                                          # cb_format+"_"+model.table_name+"_"+column_name.pluralized
     }
   }
