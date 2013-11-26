@@ -24,7 +24,12 @@ module RailsCodebook
             FactoryGirl.build(:codebook).save 
           end
 
+          visit admin_codebooks_path
+          index = page.body
+          visit admin_codebooks_path(page: 1)
+          index_paginated = page.body
 
+          assert (index == index_paginated)
         end
 
         scenario "search" do

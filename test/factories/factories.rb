@@ -30,6 +30,11 @@ module RailsCodebook
     end
 
 
+    factory :api_cb, class: RailsCodebook::Codebook do
+      sequence(:value) {|n| "api#{n}_is_tested" }
+      sequence(:name) {|n| "api.trans#{n}ation" }
+      cb_name "api_test"
+    end
 
   end
 
