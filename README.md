@@ -172,21 +172,21 @@ If you need more, I will gladly add those, just write a suggestion in issues :)
 
 Calling this in your model adds a bunch of methods into the ActiveRecord model always starting in the column_name stripped from '_cb' so for 'type_cb' all will start with 'type' (now on I will use base_column_name):
 
-  * base_method_name+"_object" => gives you the actual rel object
+  * base_method_name+"\_object" => gives you the actual rel object
 
-  * self.base_method_name+"_codebook_name" => prints out the codebook name for you
+  * self.base_method_name+"\_codebook\_name" => prints out the codebook name for you
 
   * base_method_name => serialized json format of actual object
  
-  * self.base_method_name+"_object_all"  => returns array of all codebook objects 
+  * self.base_method_name+"\_object\_all"  => returns array of all codebook objects 
 
-  * self.base_method_name+"_collection" => collection that can be passed to select_tag options
+  * self.base_method_name+"\_collection" => collection that can be passed to select_tag options
 
-  * self.base_method_name+"_all" => serialized object_all
+  * self.base_method_name+"\_all" => serialized object_all
 
-  * self.base_method_name+"_values" => array of all "values" (translated names into actual language)
+  * self.base_method_name+"\_values" => array of all "values" (translated names into actual language)
 
-  * self.base_method_name+"_keys" => array of all keys
+  * self.base_method_name+"\_keys" => array of all keys
 
 
 #### acts_as_codebook
@@ -206,19 +206,19 @@ acts_as_codebook({
 ```
 And here are methods that are added (method name will be reffered to as base_method_name as before :) ):
 
-  * base_method_name+"_object" => gives you the actual object in cb form 
+  * base_method_name+"\_object" => gives you the actual object in cb form 
 
-  * self.base_method_name+"_name" => prints out the codebook name for you
+  * self.base_method_name+"\_name" => prints out the codebook name for you
 
-  * base_method_name+"_this" => serialized json format of actual object
+  * base_method_name+"\_this" => serialized json format of actual object
  
-  * self.base_method_name+"_object_all"  => returns array of all model rows as cb objects 
+  * self.base_method_name+"\_object\_all"  => returns array of all model rows as cb objects 
 
-  * self.base_method_name+"_all" => serialized object_all
+  * self.base_method_name+"\_all" => serialized object_all
 
-  * self.base_method_name+"_values" => array of all "values"
+  * self.base_method_name+"\_values" => array of all "values"
 
-  * self.base_method_name+"_keys" => array of all keys
+  * self.base_method_name+"\_keys" => array of all keys
 
 
 #### OK that is all for now, TUNE FOR MORE INFO
