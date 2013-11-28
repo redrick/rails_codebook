@@ -5,5 +5,4 @@ Example:
     rails generate rails_codebook:install
 
     This will create:
-        create  db/seeds/default_codebooks.rb
-        rake    db:seed
+        create config/initializers/rails_codebook.rb

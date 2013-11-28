@@ -13,11 +13,6 @@ gemfile:
 services:
   - redis-server
 
-# addons:
-#   sauce_connect:
-#     username: "redrick"
-#     access_key: "3147f979-90b5-4ecd-9daf-00b44dc174d9"
-
 before_install:
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"

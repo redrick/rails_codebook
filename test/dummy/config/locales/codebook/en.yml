@@ -1,0 +1,6 @@
+en:
+  cb:
+    some_codebook:
+      low: "Low"
+      medium: "Medium"
+      high: "High"

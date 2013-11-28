@@ -1,10 +1,14 @@
 # RailsCodebook
 
+## UPDATE: please reinstall gem and see the Initialization part of readme (the last one)
+
 ### Bear in mind, this is still WORKinPROGRESS and can be buggy, all issues filed will be appreciated as well as new ideas and help of all kinds :)
 
 [![Build Status](https://travis-ci.org/redrick/rails_codebook.png?branch=master)](https://travis-ci.org/redrick/rails_codebook)
 [![Coverage Status](https://coveralls.io/repos/redrick/rails_codebook/badge.png)](https://coveralls.io/r/redrick/rails_codebook)
 [![Gem Version](https://badge.fury.io/rb/rails_codebook.png)](http://badge.fury.io/rb/rails_codebook)
+
+
 
 ## What is this ?
 
@@ -19,7 +23,7 @@ OK that is the intro, lets dive in... (oh and for those "pics or didn't happen")
 
 simple as always:
 ``` ruby
-gemm install rails_codebook
+gem install rails_codebook
 ```
 
 or by adding to your gemfile:
@@ -38,6 +42,13 @@ after bundle, there is just the simple step of mounting routes like this (this g
 mount RailsCodebook::Engine => '/codebooks'
 ```
 
+after that you kinda need to run (for default config and stuff all described in Configuration little later):
+
+```
+rails g rails_codebook:install
+```
+
+
 
 ## How is it used ?
 
@@ -46,16 +57,32 @@ After installing gem make sure you  redis is running, if not simply run it with:
 redis-server
 ```
 
+
 ### Configuration
 
-Configuration is pretty simple for now, you just need to set the redis connection, 
-if not the default one will be invoked (```Redis.new```)
-otherwise set:
-```
-RailsCodebook.redis = Redis.new()  # I use it with a db number :)
+for proper configuration make sure you run the install generator !
+and for the options inside: 
+
+```ruby
+RailsCodebook.redis = Redis.new(db:'1') # the way to tell gem what redis DB to use
+
+# config block defining key to look for in the yaml files given
+# for more info about initialization of values look all the way down :)
+RailsCodebook.configure do |config|
+  config.cb_key = 'codebook'
+  config.cb_data_path = ['config/locales/codebooks/cs.yml'] 
+end
+
+# initializing redis content, please do not change or remove
+RailsCodebook::Engine.initialize_content
 ```
 
+
+
+
 ### Possibilities
+
+
 
 #### 2WAYS
 
@@ -67,6 +94,8 @@ so I got two solutions:
 = has_codebooks
 = acts_as_codebook
 (will explain the usage later)
+
+
 
 #### GUI
 
@@ -81,6 +110,8 @@ So here are screen of the GUI made for the values so we got them under controll 
 ![#](https://raw.github.com/redrick/rails_codebook/master/doc/pictures/screen-3.png)
 
 ![#](https://raw.github.com/redrick/rails_codebook/master/doc/pictures/screen-4.png)
+
+
 
 #### API
 
@@ -110,6 +141,8 @@ you can use routes:
   GET "/(:lang)/:cb_name/:id"
   ```
 
+
+
 ### Usage
 
 OK and now to the best part :) I got this developed and tested against ActiveRecord '4.0.1' but I am not saying it is not possible it will run on older versions too...
@@ -130,6 +163,7 @@ class Article < ActiveRecord::Base
   })
 end
 ```
+
 #### has_codebooks
 
 this method is for defining which codebooks is the model using and for better usability olson on which column which codebook is mapped, so the use for simple declaring the column => codebook :
@@ -189,6 +223,7 @@ Calling this in your model adds a bunch of methods into the ActiveRecord model a
   * self.base_method_name+"\_keys" => array of all keys
 
 
+
 #### acts_as_codebook
 
 is the second way I already mentioned, you can easily transform existing ActiveRecord model into codebook by adding this to it and maybe defining which value to take as key and which as value, like this:
@@ -221,7 +256,51 @@ And here are methods that are added (method name will be reffered to as base_met
   * self.base_method_name+"\_keys" => array of all keys
 
 
+
+
+### Initialization
+
+If you want to use this gem, you somehow need to initialize all the values inside it.
+For that purpose I made it as simple as possible. I am counting on you that you are creating a multilang application, so you are familiar  with [I18n](http://guides.rubyonrails.org/i18n.html) concepts in rails and you are using them in this application.
+Therefore you got to have your translations for every codebook value you want to use.
+
+I myself use the initializzation process like this:
+
+in ```config/locales``` I created myself the ```codebooks``` directory where I placed all the files with different translations of codebook values in certain format:
+```config/locales/codebook/cs.yml```
+```yaml
+cs:
+  codebook:  # this is the cb_key you can define in config block in case you dont like my default
+    boolean: # this is the codebook name
+      'yes': 'ano' # this is the value
+      'no': 'ne'
+    importance:
+      low: 'nízká'
+      medium: 'střední'
+      high: 'vysoká'
+```
+
+So after keeping this in mind I will take your yml files (you can enter multiple relative routes into array) and loop through them and produce redis "rows" like this one (first one from the yml above):
+```
+#<RailsCodebook::Codebook:0x007fbb6d2e4a98 
+  @id=1,  
+  @name="codebook.boolean.yes", 
+  @value="yes", 
+  @cb_name="boolean",
+  @persisted=true, 
+  @_model_name="rails_codebook/codebook", 
+  @created_at=2013-11-28 10:14:57 +0100, 
+  @updated_at="2013-11-28 10:14:57", 
+  @sequence=100, 
+  @deleted=0> 
+```
+do not worry that you have no idea what those other attributes are, either way for not you use only first four :)
+
+
+
 #### OK that is all for now, TUNE FOR MORE INFO
+
+
 
 ## Contributing
 

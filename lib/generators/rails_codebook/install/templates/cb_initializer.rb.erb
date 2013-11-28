@@ -1,0 +1,8 @@
+# RailsCodebook.redis = Redis.new(db:'1')
+
+RailsCodebook.configure do |config|
+  # config.cb_key = 'codebook'
+  # config.cb_data_path = ['config/locales/codebooks/cs.yml']
+end
+
+RailsCodebook::Engine.initialize_content
