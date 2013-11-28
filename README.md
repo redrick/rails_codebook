@@ -267,8 +267,9 @@ Therefore you got to have your translations for every codebook value you want to
 I myself use the initializzation process like this:
 
 in ```config/locales``` I created myself the ```codebooks``` directory where I placed all the files with different translations of codebook values in certain format:
-```config/locales/codebook/cs.yml```
-```yaml
+
+_config/locales/codebook/cs.yml_
+``` yaml
 cs:
   codebook:  # this is the cb_key you can define in config block in case you dont like my default
     boolean: # this is the codebook name
