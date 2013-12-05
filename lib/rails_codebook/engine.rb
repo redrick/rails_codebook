@@ -4,7 +4,13 @@ module RailsCodebook
 
 
     def initialize_content
-      RailsCodebook::configuration.cb_data_path.each do |filename|
+      routes = ['']
+      if File.exists?(File.join(Gem.loaded_specs['rails_codebook'].full_gem_path, 'config', 'locales', 'cs.yml'))
+        default_cb_route = [File.join(Gem.loaded_specs['rails_codebook'].full_gem_path, 'config', 'locales', 'cs.yml')]
+        routes = RailsCodebook::configuration.cb_data_path + default_cb_route
+      end
+
+      routes.each do |filename|
         
         codebook_values_file = (File.exists?(filename)) ? filename : nil
 
